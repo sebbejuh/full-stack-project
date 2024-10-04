@@ -24,4 +24,7 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  .nav-link {
+    @apply text-zinc-600 hover:text-zinc-900 transition-colors
+  }
 }
