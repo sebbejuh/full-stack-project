@@ -35,7 +35,7 @@ export default async function Posts() {
       <Flex direction='column' align='center' justify='center'>
         <Text weight='medium' size='5'>Post Feed</Text>
         {
-          posts.map((post) => {
+          posts.slice().reverse().map((post) => {
             return (
               <PostCard
                 key={post.id}
