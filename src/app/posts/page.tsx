@@ -4,6 +4,8 @@ import PostForm from './PostForm';
 import { Post as PrismaPost } from '@prisma/client';
 import { Flex, Text } from '@radix-ui/themes';
 
+export const dynamic = 'force-dynamic';
+
 type Author = {
   name: string | null;
   image: string | null;
