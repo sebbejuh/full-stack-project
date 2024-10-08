@@ -7,28 +7,53 @@ import Skeleton from "@/app/components/Skeleton";
 import { useRouter } from 'next/navigation';
 import toast from "react-hot-toast";
 import { Button } from '@radix-ui/themes';
+import { postSchema } from "../components/validationSchema";
 
 const PostForm = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [error, setError] = useState('');
   const { status, data: session } = useSession();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (event: React.FormEvent) => {
     setIsSubmitting(true)
+    setError('')
     event.preventDefault();
 
     if (!session) {
       toast.error('You are not logged in.');
+      setIsSubmitting(false)
       return;
+    }
+
+    const validationResult = postSchema.safeParse({ title: title, content: content });
+
+    if (!validationResult.success) {
+      let errorMessage = '';
+      validationResult.error.issues.forEach((issue) => {
+        errorMessage = errorMessage + issue.message + '. ';
+      })
+
+      console.log(errorMessage)
+      toast.error('Failed to post.')
+      setError(errorMessage)
+      setIsSubmitting(false)
+      return;
+    }
+
+    if (!session.user) {
+      toast.error('User error.')
+      toast.error('Please logout & in again.')
+      return
     }
 
     try {
       await axios.post('/api/posts', {
         title,
         content,
-        userId: session.user?.id,
+        userId: session.user.id,
       });
 
       toast.success('Post Created!')
@@ -46,7 +71,7 @@ const PostForm = () => {
   if (status === "loading") return <Skeleton height="13rem" width="13rem" />;
   return (
     <Form.Root className="w-[260px]" onSubmit={handleSubmit}>
-      <Form.Field className="grid" name="email">
+      <Form.Field className="grid" name="title">
         <div className="flex items-baseline justify-between">
           <Form.Label className="text-[15px] font-medium leading-[35px] text-black">
             Title
@@ -56,12 +81,6 @@ const PostForm = () => {
             match="valueMissing"
           >
             Please enter a title
-          </Form.Message>
-          <Form.Message
-            className="text-[13px] text-red-600 opacity-80"
-            match="typeMismatch"
-          >
-            Please provide a valid title
           </Form.Message>
         </div>
         <Form.Control asChild>
@@ -94,6 +113,11 @@ const PostForm = () => {
             onChange={(e) => setContent(e.target.value)}
           />
         </Form.Control>
+        {error && (
+          <Form.Message className="text-[12px] text-red-600 opacity-80">
+            {error}
+          </Form.Message>
+        )}
       </Form.Field>
       <Form.Submit asChild>
         <Button disabled={isSubmitting} color={isSubmitting ? 'gray' : 'indigo'} className='w-full hover:cursor-pointer'>
