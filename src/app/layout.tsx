@@ -5,6 +5,7 @@ import "./globals.css";
 import { Theme, Container } from '@radix-ui/themes';
 import NavBar from "./NavBar";
 import AuthProvider from "./auth/Provider";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -36,6 +37,10 @@ export default function RootLayout({
             <main className="p-5">
               <Container>{children}</Container>
             </main>
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+              />
           </Theme>
         </AuthProvider>
       </body>
