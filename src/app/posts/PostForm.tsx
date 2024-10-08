@@ -5,39 +5,44 @@ import { useState } from 'react';
 import { useSession } from "next-auth/react";
 import Skeleton from "@/app/components/Skeleton";
 import { useRouter } from 'next/navigation';
+import toast from "react-hot-toast";
+import { Button } from '@radix-ui/themes';
 
 const PostForm = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [error, setError] = useState('');
   const { status, data: session } = useSession();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (event: React.FormEvent) => {
+    setIsSubmitting(true)
     event.preventDefault();
 
     if (!session) {
-      setError('You are not logged in.');
+      toast.error('You are not logged in.');
       return;
     }
 
     try {
-      const response = await axios.post('/api/posts', {
+      await axios.post('/api/posts', {
         title,
         content,
-        userId: session.user?.id, 
+        userId: session.user?.id,
       });
 
-      console.log('Post created:', response.data);
-      
+      toast.success('Post Created!')
       setTitle('');
       setContent('');
+      setIsSubmitting(false)
       router.refresh();
     } catch (error) {
-      console.error('Error creating post:', error);
+      console.error('Error:', error);
+      toast.error(`Error: ${error instanceof Error ? error.message : 'An unknown error occurred'}`)
+      setIsSubmitting(false)
     }
-  };
-  if(error) console.log(error)  //TODO more error handling, use toast or something, maybe zod validation here aswell as in api?
+  }
+
   if (status === "loading") return <Skeleton height="13rem" width="13rem" />;
   return (
     <Form.Root className="w-[260px]" onSubmit={handleSubmit}>
@@ -91,9 +96,9 @@ const PostForm = () => {
         </Form.Control>
       </Form.Field>
       <Form.Submit asChild>
-        <button className="mt-2.5 box-border inline-flex h-[35px] w-full items-center justify-center rounded bg-white px-[15px] font-medium leading-none text-black shadow-[0_2px_10px] shadow-blackA4 hover:bg-mauve3 focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none">
+        <Button disabled={isSubmitting} color={isSubmitting ? 'gray' : 'indigo'} className='w-full hover:cursor-pointer'>
           Add Post
-        </button>
+        </Button>
       </Form.Submit>
     </Form.Root>
   )
