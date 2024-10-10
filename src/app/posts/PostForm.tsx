@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import Skeleton from "@/app/components/Skeleton";
 import { useRouter } from 'next/navigation';
 import toast from "react-hot-toast";
-import { Button } from '@radix-ui/themes';
+import { Button, Flex } from '@radix-ui/themes';
 import { postSchema } from "../components/validationSchema";
 
 const PostForm = () => {
@@ -70,8 +70,8 @@ const PostForm = () => {
 
   if (status === "loading") return <Skeleton height="13rem" width="13rem" />;
   return (
-    <Form.Root className="w-[260px]" onSubmit={handleSubmit}>
-      <Form.Field className="grid" name="title">
+    <Form.Root className=" max-w-[600px] w-full" style={{ display: 'block', width: '100%', maxWidth: '600px' }} onSubmit={handleSubmit}>
+      <Form.Field className="grid max-w-[600px] w-full" name="title">
         <div className="flex items-baseline justify-between">
           <Form.Label className="text-[15px] font-medium leading-[35px] text-black">
             Title
@@ -93,7 +93,7 @@ const PostForm = () => {
           />
         </Form.Control>
       </Form.Field>
-      <Form.Field className="mb-2.5 grid" name="content">
+      <Form.Field className="mb-2.5 grid max-w-[600px] w-full" name="content">
         <div className="flex items-baseline justify-between">
           <Form.Label className="text-[15px] font-medium leading-[35px] text-black">
             Content
@@ -120,9 +120,12 @@ const PostForm = () => {
         )}
       </Form.Field>
       <Form.Submit asChild>
-        <Button disabled={isSubmitting} color={isSubmitting ? 'gray' : 'indigo'} className='w-full hover:cursor-pointer'>
-          Add Post
-        </Button>
+        <Flex justify='end'>
+          <Button disabled={isSubmitting} color={isSubmitting ? 'gray' : 'indigo'} className='w-full hover:cursor-pointer max-w-[200px]'>
+            Add Post
+          </Button>
+        </Flex>
+
       </Form.Submit>
     </Form.Root>
   )
