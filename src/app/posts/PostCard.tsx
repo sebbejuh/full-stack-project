@@ -1,6 +1,7 @@
 import { Flex, Text, Card, Box, Avatar, Badge } from '@radix-ui/themes';
 import { PersonIcon } from "@radix-ui/react-icons";
 import { Post as PrismaPost } from '@prisma/client';
+import ClientTimezoneDate from '../components/ClientTimezoneDate';
 
 type Author = {
   name: string | null;
@@ -16,8 +17,10 @@ interface PostCardProps {
 const PostCard: React.FC<PostCardProps> = ({ post }) => {
 
   const { title, content, createdAt, updatedAt, author } = post;
-  const formattedCreatedAt = new Date(createdAt).toLocaleDateString();
-  const formattedUpdatedAt = new Date(updatedAt).toLocaleDateString();
+
+  const isSameDate = new Date(createdAt).getTime() === new Date(updatedAt).getTime();
+  const mostRecentDate = isSameDate ? createdAt : (new Date(updatedAt).getTime() > new Date(createdAt).getTime() ? updatedAt : createdAt);
+  const isUpdated = !isSameDate && new Date(updatedAt).getTime() > new Date(createdAt).getTime();
 
   return (
     <Box width='100%' maxWidth='600px'>
@@ -33,8 +36,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             <Flex direction='column' gap='1'>
               <Text size='2' weight='bold'>{author?.name}</Text>
               <Flex>
-                <Badge highContrast >{formattedCreatedAt}</Badge>
-                <Badge>Updated: {formattedUpdatedAt}</Badge>
+                <Badge >{isUpdated && 'Updated at'}<ClientTimezoneDate date={mostRecentDate} /></Badge>
               </Flex>
             </Flex>
           </Flex>
