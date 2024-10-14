@@ -29,13 +29,12 @@ export default async function Posts() {
   const posts: PostWithAuthor[] = await getPosts();
 
   return (
-    <Flex direction='column' align='center' gap='4'>
+    <Flex direction='column' align='center' gap='5'>
       <Flex direction='column' align='center' justify='center' width='100%' >
         <Text weight='medium' size='5'>Posts</Text>
         <PostForm />
       </Flex>
       <Flex direction='column' align='center' justify='center' width='100%' gap='4'>
-        <Text weight='medium' size='5'>Post Feed</Text>
         {
           posts.slice().reverse().map((post) => {
             return (
