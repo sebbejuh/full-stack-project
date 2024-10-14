@@ -31,7 +31,7 @@ const NavBar = () => {
 
 const AuthStatus = () => {
   const { status, data: session } = useSession();
-  if (status === 'loading') return <Skeleton width='2rem' height='2remF' />;
+  if (status === 'loading') return <Skeleton width='1.8rem' height='1.8rem' />;
   if (status === 'unauthenticated' || !session || !session.user)
     return (
       <Link className='nav-link flex flex-row items-center gap-2	' href={'/api/auth/signin'}>
