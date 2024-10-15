@@ -60,6 +60,7 @@ const PostForm = () => {
       setTitle('');
       setContent('');
       setIsSubmitting(false)
+      router.push("/posts");
       router.refresh();
     } catch (error) {
       console.error('Error:', error);
