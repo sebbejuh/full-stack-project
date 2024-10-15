@@ -5,6 +5,7 @@ import Spinner from '@/app/components/Spinner'
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast from 'react-hot-toast';
 
 const DeletePostBtn = ({ postId }: { postId: string }) => {
   const router = useRouter();
@@ -17,11 +18,12 @@ const DeletePostBtn = ({ postId }: { postId: string }) => {
       await axios.delete("/api/posts/" + postId, {
         data: { postId }
       });
+      toast.success('Post Deleted!')
       setLoading(false);
       router.push("/posts");
       router.refresh();
     } catch (error) {
-      console.log(error)
+      toast.error(`Error: ${error instanceof Error ? error.message : 'An unknown error occurred'}`)
       setLoading(false);
       setError(true);
     }
