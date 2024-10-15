@@ -11,6 +11,7 @@ const DeletePostBtn = ({ postId }: { postId: string }) => {
   const router = useRouter();
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [deleted, setDeleted] = useState(false);
 
   const deletePost = async () => {
     try {
@@ -19,20 +20,26 @@ const DeletePostBtn = ({ postId }: { postId: string }) => {
         data: { postId }
       });
       toast.success('Post Deleted!')
-      setLoading(false);
       router.push("/posts");
       router.refresh();
+      setLoading(false);
+      setDeleted(true)
     } catch (error) {
       toast.error(`Error: ${error instanceof Error ? error.message : 'An unknown error occurred'}`)
       setLoading(false);
       setError(true);
     }
   };
+  if (deleted)
+    return (
+      <>
+      </>
+    )
   return (
     <>
       <AlertDialog.Root>
         <AlertDialog.Trigger>
-          <IconButton variant="soft" color='red' size='1' className='hover:cursor-pointer'>
+          <IconButton variant="soft" color='red' size='1' className='hover:cursor-pointer' disabled={isLoading || error}>
             {isLoading ? <Spinner /> : <IoTrashBinOutline />}
           </IconButton>
         </AlertDialog.Trigger>
