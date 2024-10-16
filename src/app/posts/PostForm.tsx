@@ -111,7 +111,7 @@ const PostForm = () => {
         </div>
         <Form.Control asChild>
           <textarea
-            className='box-border inline-flex w-full h-[95px] resize-none appearance-none items-center justify-center rounded bg-blackA2 p-2.5 text-[15px] leading-none text-black shadow-[0_0_0_1px] shadow-blackA6 outline-none selection:bg-blackA6 selection:text-white hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black]'
+            className='box-border inline-flex w-full h-[175px] md:h-[95px] leading-snug resize-none appearance-none items-center justify-center rounded bg-blackA2 p-2.5 text-[13px] leading-none text-black shadow-[0_0_0_1px] shadow-blackA6 outline-none selection:bg-blackA6 selection:text-white hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black]'
             required
             value={content}
             onChange={(e) => setContent(e.target.value)}
