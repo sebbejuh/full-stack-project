@@ -129,7 +129,7 @@ const PostForm = () => {
         </Form.Field>
         <Form.Submit asChild>
           <Flex justify='end'>
-            <Button disabled={isSubmitting} color={isSubmitting ? 'gray' : 'indigo'} className='w-full hover:cursor-pointer max-w-[200px]'>
+            <Button disabled={isSubmitting} color={isSubmitting ? 'gray' : 'indigo'} className='w-full hover:cursor-pointer hover:underline underline-offset-2 max-w-[200px]'>
               Add Post
             </Button>
           </Flex>

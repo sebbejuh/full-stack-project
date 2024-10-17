@@ -6,12 +6,12 @@ import { Avatar, Box, Container, DropdownMenu, Flex, Text, Badge } from '@radix-
 import { HomeIcon } from '@radix-ui/react-icons'
 import { usePathname } from 'next/navigation';
 import classNames from 'classnames';
-import { FcGoogle } from 'react-icons/fc';
+import { BsGoogle } from "react-icons/bs";
 
 
 const NavBar = () => {
   return (
-    <nav className='border-b md-5 px-5 py-3'>
+    <nav className='border-b border-zinc-800 px-5 py-3' style={{ backgroundColor: '#d8f4f609' }}>
       <Container>
         <Flex justify='between'>
           <Flex align='center' gap='3'>
@@ -34,8 +34,8 @@ const AuthStatus = () => {
   if (status === 'loading') return <Skeleton width='1.8rem' height='1.8rem' />;
   if (status === 'unauthenticated' || !session || !session.user)
     return (
-      <Link className='nav-link flex flex-row items-center gap-2	' href={'/api/auth/signin'}>
-        <Badge size='3' ><FcGoogle size={22} />Login</Badge>
+      <Link className='flex flex-row items-center gap-2	' href={'/api/auth/signin'}>
+        <Badge size='3' variant="solid"> <BsGoogle size={17} />Login</Badge>
       </Link>
     );
   return (
@@ -77,7 +77,7 @@ const NavLinks = () => {
           <Link
             className={classNames({
               'nav-link': true,
-              '!text-zinc-900': link.href === currentPath,
+              '!text-white underline underline-offset-4': link.href === currentPath,
             })}
             href={link.href}
           >
