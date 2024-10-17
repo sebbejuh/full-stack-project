@@ -39,7 +39,7 @@ const DeletePostBtn = ({ postId }: { postId: string }) => {
     <>
       <AlertDialog.Root>
         <AlertDialog.Trigger>
-          <IconButton variant="soft" color='red' size='1' className='hover:cursor-pointer' disabled={isLoading || error}>
+          <IconButton variant="solid" color='tomato' size='1' className='hover:cursor-pointer' disabled={isLoading || error}>
             {isLoading ? <Spinner /> : <IoTrashBinOutline />}
           </IconButton>
         </AlertDialog.Trigger>
@@ -57,7 +57,7 @@ const DeletePostBtn = ({ postId }: { postId: string }) => {
               </Button>
             </AlertDialog.Cancel>
             <AlertDialog.Action>
-              <Button color="red" disabled={isLoading} onClick={deletePost} className='hover:cursor-pointer'>
+              <Button variant="solid" color="tomato" disabled={isLoading} onClick={deletePost} className='hover:cursor-pointer'>
                 Delete Post
               </Button>
             </AlertDialog.Action>
