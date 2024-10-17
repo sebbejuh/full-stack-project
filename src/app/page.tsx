@@ -1,6 +1,6 @@
-import { Flex, Text} from '@radix-ui/themes';
-import { getServerSession } from "next-auth";
-import authOptions from "./auth/authOptions";
+import { Flex, Text } from '@radix-ui/themes';
+import { getServerSession } from 'next-auth';
+import authOptions from './auth/authOptions';
 
 export default async function Home() {
   const session = await getServerSession(authOptions)
