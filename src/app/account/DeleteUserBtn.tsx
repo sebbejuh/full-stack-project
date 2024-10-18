@@ -5,7 +5,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from 'react-hot-toast';
-import { useSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 import Skeleton from '@/app/components/Skeleton';
 
 const DeleteUserBtn = () => {
@@ -16,18 +16,22 @@ const DeleteUserBtn = () => {
   const { status, data: session } = useSession();
 
   const deleteUser = async () => {
-    if (!session || !session.user || session.user.id) {
+    if (!session) {
       toast.error('You are not correctly logged in')
       return;
     }
-    const userId = session.user.id
+    const userId = session.user?.id
+    if (!userId) {
+      toast.error('You are not correctly logged in')
+      return;
+    }
     try {
       setLoading(true);
       await axios.delete("/api/users/" + userId, {
         data: { userId }
       });
       toast.success('User Deleted!')
-      router.push("/api/auth/signout");
+      await signOut();
       router.refresh();
       setLoading(false);
       setDeleted(true)
