@@ -2,7 +2,7 @@ import prisma from '../../../prisma/prisma';
 import PostCard from './PostCard';
 import PostForm from './PostForm';
 import { Post as PrismaPost } from '@prisma/client';
-import { Flex, Text } from '@radix-ui/themes';
+import { Flex, Heading } from '@radix-ui/themes';
 
 export const dynamic = 'force-dynamic';
 
@@ -31,7 +31,7 @@ export default async function Posts() {
   return (
     <Flex direction='column' align='center' gap='5'>
       <Flex direction='column' align='center' justify='center' width='100%' >
-        <Text weight='medium' size='5'>Posts</Text>
+        <Heading as='h1' size='6'>Posts</Heading>
         <PostForm />
       </Flex>
       <Flex direction='column' align='center' justify='center' width='100%' gap='4'>
