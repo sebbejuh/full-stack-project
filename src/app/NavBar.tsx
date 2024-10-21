@@ -4,10 +4,10 @@ import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { Avatar, Box, Container, DropdownMenu, Flex, Text, Badge } from '@radix-ui/themes';
 import { HomeIcon } from '@radix-ui/react-icons'
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import classNames from 'classnames';
-import { BsGoogle } from "react-icons/bs";
-
+import { BsGoogle } from 'react-icons/bs';
+import { useState } from 'react';
 
 const NavBar = () => {
   return (
@@ -31,6 +31,14 @@ const NavBar = () => {
 
 const AuthStatus = () => {
   const { status, data: session } = useSession();
+  const [open, setOpen] = useState(false);
+  const router = useRouter();
+
+  const handleNavigation = (href: string) => {
+    setOpen(false);
+    router.push(href);
+  };
+
   if (status === 'loading') return <Skeleton width='1.8rem' height='1.8rem' />;
   if (status === 'unauthenticated' || !session || !session.user)
     return (
@@ -40,7 +48,7 @@ const AuthStatus = () => {
     );
   return (
     <Box>
-      <DropdownMenu.Root>
+      <DropdownMenu.Root open={open} onOpenChange={setOpen}>
         <DropdownMenu.Trigger>
           <Avatar
             src={session!.user!.image!}
@@ -55,11 +63,11 @@ const AuthStatus = () => {
           <DropdownMenu.Label>
             <Text size='2'>{session!.user!.email}</Text>
           </DropdownMenu.Label>
-          <DropdownMenu.Item>
-            <Link href={'/account'}>My Account</Link>
+          <DropdownMenu.Item onSelect={() => handleNavigation('/account')} className='cursor-pointer'>
+            My Account
           </DropdownMenu.Item>
-          <DropdownMenu.Item>
-            <Link href={'/api/auth/signout'}>Log out</Link>
+          <DropdownMenu.Item onSelect={() => handleNavigation('/api/auth/signout')} className='cursor-pointer'>
+            Log out
           </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Root>
