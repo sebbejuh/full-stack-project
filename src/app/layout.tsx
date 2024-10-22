@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import { Theme, Container } from '@radix-ui/themes';
+import { Theme } from '@radix-ui/themes';
 import NavBar from './NavBar';
 import AuthProvider from './auth/Provider';
 import { Toaster } from 'react-hot-toast';
@@ -34,7 +34,7 @@ export default function RootLayout({
           <Theme accentColor='indigo' appearance='dark'>
             <NavBar />
             <main className='p-5'>
-              <Container>{children}</Container>
+              {children}
             </main>
             <Toaster
               position='top-center'
