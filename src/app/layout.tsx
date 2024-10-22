@@ -18,7 +18,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Under Construction',
+  title: 'Locksenius Portfolio',
   description: 'Portfolio under contruction',
 };
 
