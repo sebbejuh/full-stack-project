@@ -30,7 +30,7 @@ export default async function Posts() {
 
   return (
     <Flex direction='column' align='center' gap='5'>
-      <Heading as='h1' size='6'>Posts</Heading>
+      <Heading as='h1' size='6'>Posts App</Heading>
       <Flex direction='column' align='center' justify='center' width='100%' >
         <PostForm />
       </Flex>
