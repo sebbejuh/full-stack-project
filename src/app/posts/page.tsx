@@ -3,6 +3,7 @@ import PostCard from './PostCard';
 import PostForm from './PostForm';
 import { Post as PrismaPost } from '@prisma/client';
 import { Flex, Heading } from '@radix-ui/themes';
+import type { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
 
@@ -46,3 +47,7 @@ export default async function Posts() {
     </Flex>
   );
 }
+export const metadata: Metadata = {
+  title: 'Posts App',
+  description: 'A web application where users can create posts.',
+};
