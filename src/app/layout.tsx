@@ -35,7 +35,7 @@ export default function RootLayout({
             <header>
               <NavBar />
             </header>
-            <main className='p-5'>
+            <main className='p-5 pt-20'>
               {children}
             </main>
             <Toaster
