@@ -7,10 +7,10 @@ import { GrMysql } from "react-icons/gr";
 
 const HeroSection = () => {
   return (
-    <div className='border-b border-neutral-900 pb-4 lg:mb35'>
+    <Flex className='border-b border-neutral-900 pb-4 lg:mb35'>
       <Flex wrap='wrap'>
-        <div className='w-full lg:w-1/2'>
-          <Flex direction='column' className='items-center lg:items-start'>
+        <Flex wrap='wrap' className='w-full lg:w-1/2'>
+          <Flex wrap='wrap' direction='column' className='items-center lg:items-start'>
             <Heading as='h1' className='pb-16 text-6xl font-thin tracking-tight lg:mt-16 lg:text-8xl'>Sebastian Locksenius</Heading>
             <Text className='bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text text-4xl tracking-tight text-transparent'>
               Frontend Developer
@@ -27,11 +27,11 @@ const HeroSection = () => {
               technologies and concepts
             </Text>
           </Flex>
-        </div>
-        <div className='w-full lg:w-1/2'>
-          <Flex justify='center' direction='column' align='center' className='items-center'>
+        </Flex>
+        <Flex wrap='wrap' className='w-full lg:w-1/2'>
+          <Flex wrap='wrap' justify='center' direction='column' align='center' className='items-center'>
             <Heading as='h2' className='pt-16 pb-16 text-4xl font-thin tracking-tight lg:mt-16 lg:text-6xl'>My Skills</Heading>
-            <Flex gap='4' wrap='wrap' justify='start' width='600px'>
+            <Flex gap='4' wrap='wrap' justify='start' maxWidth='600px'>
               <Card><Flex gap='1' align='center'><SiTypescript size='1.35rem' /><Text>TypeScript</Text></Flex></Card>
               <Card><Flex gap='1' align='center'><FaHtml5 size='1.35rem' /><Text>HTML</Text></Flex></Card>
               <Card><Flex gap='1' align='center'><SiCss3 size='1.35rem' /><Text>CSS</Text></Flex></Card>
@@ -48,9 +48,9 @@ const HeroSection = () => {
               <Card><Flex gap='1' align='center'><FaGitAlt size='1.35rem' /><Text>Git</Text></Flex></Card>
             </Flex>
           </Flex>
-        </div>
+        </Flex>
       </Flex>
-    </div>
+    </Flex>
   )
 }
 
