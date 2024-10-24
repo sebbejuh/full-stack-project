@@ -32,7 +32,9 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased `}>
         <AuthProvider>
           <Theme accentColor='indigo' appearance='dark'>
-            <NavBar />
+            <header>
+              <NavBar />
+            </header>
             <main className='p-5'>
               {children}
             </main>
