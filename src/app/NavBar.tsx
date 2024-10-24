@@ -11,7 +11,7 @@ import { useState } from 'react';
 
 const NavBar = () => {
   return (
-    <nav className='border-b border-zinc-800 px-5 py-3' style={{ backgroundColor: '#d8f4f609' }}>
+    <nav className='fixed top-0 z-10 border-b border-zinc-800 px-5 py-3 w-full' style={{ backgroundColor: '#1b1c1f' }}>
       <Container>
         <Flex justify='between'>
           <Flex align='center' gap='3'>
