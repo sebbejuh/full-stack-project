@@ -1,8 +1,7 @@
 'use client'
-import Skeleton from '@/app/components/Skeleton'
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
-import { Avatar, Box, Container, DropdownMenu, Flex, Text, Button } from '@radix-ui/themes';
+import { Avatar, Box, Container, DropdownMenu, Flex, Text, Button, Skeleton } from '@radix-ui/themes';
 import { HomeIcon } from '@radix-ui/react-icons'
 import { usePathname, useRouter } from 'next/navigation';
 import classNames from 'classnames';
@@ -39,12 +38,13 @@ const AuthStatus = () => {
     router.push(href);
   };
 
-  if (status === 'loading') return <Skeleton width='1.8rem' height='1.8rem' />;
   if (status === 'unauthenticated' || !session || !session.user)
     return (
-      <Link className='flex flex-row items-center gap-2	' href={'/signin'}>
-        <Button size='2' variant="solid" className='cursor-pointer'> <BsGoogle size={17} />Sign In</Button>
-      </Link>
+      <Skeleton loading={status === 'loading'}>
+        <Link className='flex flex-row items-center gap-2	' href={'/signin'}>
+          <Button size='2' variant="solid" className='cursor-pointer'> <BsGoogle size={17} />Sign In</Button>
+        </Link>
+      </Skeleton>
     );
   return (
     <Box>
