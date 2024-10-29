@@ -42,8 +42,8 @@ const AuthStatus = () => {
   if (status === 'loading') return <Skeleton width='1.8rem' height='1.8rem' />;
   if (status === 'unauthenticated' || !session || !session.user)
     return (
-      <Link className='flex flex-row items-center gap-2	' href={'/api/auth/signin'}>
-        <Badge size='3' variant="solid"> <BsGoogle size={17} />Login</Badge>
+      <Link className='flex flex-row items-center gap-2	' href={'/signin'}>
+        <Badge size='3' variant="solid"> <BsGoogle size={17} />Sign In</Badge>
       </Link>
     );
   return (
