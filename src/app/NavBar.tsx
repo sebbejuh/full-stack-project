@@ -2,7 +2,7 @@
 import Skeleton from '@/app/components/Skeleton'
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
-import { Avatar, Box, Container, DropdownMenu, Flex, Text, Badge } from '@radix-ui/themes';
+import { Avatar, Box, Container, DropdownMenu, Flex, Text, Button } from '@radix-ui/themes';
 import { HomeIcon } from '@radix-ui/react-icons'
 import { usePathname, useRouter } from 'next/navigation';
 import classNames from 'classnames';
@@ -43,7 +43,7 @@ const AuthStatus = () => {
   if (status === 'unauthenticated' || !session || !session.user)
     return (
       <Link className='flex flex-row items-center gap-2	' href={'/signin'}>
-        <Badge size='3' variant="solid"> <BsGoogle size={17} />Sign In</Badge>
+        <Button size='2' variant="solid" className='cursor-pointer'> <BsGoogle size={17} />Sign In</Button>
       </Link>
     );
   return (
