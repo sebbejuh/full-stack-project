@@ -1,17 +1,19 @@
 'use client'
 import { IoTrashBinOutline } from "react-icons/io5";
-import { IconButton, AlertDialog, Flex, Button } from '@radix-ui/themes';
+import { IconButton, AlertDialog, Flex, Button, Skeleton } from '@radix-ui/themes';
 import Spinner from '@/app/components/Spinner'
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from 'react-hot-toast';
+import { useSession } from 'next-auth/react';
 
 const DeletePostBtn = ({ postId }: { postId: string }) => {
   const router = useRouter();
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [deleted, setDeleted] = useState(false);
+  const { status, } = useSession();
 
   const deletePost = async () => {
     try {
@@ -39,9 +41,11 @@ const DeletePostBtn = ({ postId }: { postId: string }) => {
     <>
       <AlertDialog.Root>
         <AlertDialog.Trigger>
-          <IconButton variant="solid" color='tomato' size='1' className='hover:cursor-pointer' disabled={isLoading || error}>
-            {isLoading ? <Spinner /> : <IoTrashBinOutline />}
-          </IconButton>
+          <Skeleton loading={status === 'loading'}>
+            <IconButton variant="solid" color='tomato' size='1' className='hover:cursor-pointer' disabled={isLoading || error}>
+              {isLoading ? <Spinner /> : <IoTrashBinOutline />}
+            </IconButton>
+          </Skeleton >
         </AlertDialog.Trigger>
         <AlertDialog.Content>
           <AlertDialog.Title>Confirm Deletion</AlertDialog.Title>
