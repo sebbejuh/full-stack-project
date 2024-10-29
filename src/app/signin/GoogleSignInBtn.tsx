@@ -4,18 +4,15 @@ import { Text, Button, Skeleton } from '@radix-ui/themes';
 import { BsGoogle } from 'react-icons/bs';
 import { signIn } from 'next-auth/react'
 import { useSession } from 'next-auth/react';
-import { useSearchParams } from 'next/navigation';
 
 const GoogleSignInBtn = () => {
   const { status, data: session } = useSession();
   const [isSigningIn, setIsSigningIn] = useState(false);
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get('callbackUrl') || '/'
 
   const handleSignIn = async () => {
     setIsSigningIn(true);
     try {
-      await signIn('google', { callbackUrl });
+      await signIn('google', { callbackUrl: '/' });
     } finally {
       setIsSigningIn(false);
     }
