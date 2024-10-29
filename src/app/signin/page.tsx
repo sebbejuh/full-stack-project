@@ -1,14 +1,7 @@
 import GoogleSignInBtn from "./GoogleSignInBtn"
 import { Flex, Text, Card, Heading } from '@radix-ui/themes';
-import { getServerSession } from 'next-auth';
-import authOptions from '../auth/authOptions';
-import { redirect } from 'next/navigation';
 
 const SignInPage = async () => {
-  const session = await getServerSession(authOptions)
-  if (session) {
-    redirect('/');
-  }
   return (
     <>
       <Flex direction='column' align='center' gap='5'>
