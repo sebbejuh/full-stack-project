@@ -79,7 +79,7 @@ const NavLinks = () => {
   const currentPath = usePathname();
   const links = [
     { label: 'Home', href: '/' },
-    { label: 'Posts', href: '/posts' },
+    { label: 'Posts App', href: '/posts' },
   ];
   return (
     <ul className='flex space-x-6'>
