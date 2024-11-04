@@ -40,13 +40,13 @@ const DeletePostBtn = ({ postId }: { postId: string }) => {
   return (
     <>
       <AlertDialog.Root>
-        <AlertDialog.Trigger>
-          <Skeleton loading={status === 'loading'}>
+        <Skeleton loading={status === 'loading'}>
+          <AlertDialog.Trigger>
             <IconButton variant="solid" color='tomato' size='1' className='hover:cursor-pointer' disabled={isLoading || error}>
               {isLoading ? <Spinner /> : <IoTrashBinOutline />}
             </IconButton>
-          </Skeleton >
-        </AlertDialog.Trigger>
+          </AlertDialog.Trigger>
+        </Skeleton >
         <AlertDialog.Content>
           <AlertDialog.Title>Confirm Deletion</AlertDialog.Title>
           <AlertDialog.Description size="2">
