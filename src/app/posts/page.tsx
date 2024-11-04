@@ -1,7 +1,7 @@
 import prisma from '../../../prisma/prisma';
 import PostCard from './PostCard';
 import PostForm from './PostForm';
-import { Post as PrismaPost } from '@prisma/client';
+import { Post as PrismaPost, Like } from '@prisma/client';
 import { Flex, Heading } from '@radix-ui/themes';
 import type { Metadata } from 'next';
 
@@ -11,15 +11,28 @@ type Author = {
   name: string | null;
   image: string | null;
 };
-type PostWithAuthor = PrismaPost & {
+type LikeWithUser = Like & {
+  user: {
+    name: string | null;
+  };
+};
+type PostWithAuthorAndLikes = PrismaPost & {
   author: Author | null;
+  likes: LikeWithUser[];
 };
 
-async function getPosts(): Promise<PostWithAuthor[]> {
+async function getPosts(): Promise<PostWithAuthorAndLikes[]> {
   const posts = await prisma.post.findMany({
     include: {
       author: {
         select: { name: true, image: true }
+      },
+      likes: {
+        include: {
+          user: {
+            select: { name: true, }
+          }
+        }
       }
     }
   })
@@ -27,7 +40,7 @@ async function getPosts(): Promise<PostWithAuthor[]> {
 }
 
 export default async function Posts() {
-  const posts: PostWithAuthor[] = await getPosts();
+  const posts: PostWithAuthorAndLikes[] = await getPosts();
 
   return (
     <Flex direction='column' align='center' gap='5'>
