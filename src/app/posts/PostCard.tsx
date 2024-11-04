@@ -1,6 +1,6 @@
 import { Flex, Text, Card, Box, Avatar, Badge } from '@radix-ui/themes';
 import { PersonIcon } from "@radix-ui/react-icons";
-import { Post as PrismaPost } from '@prisma/client';
+import { Post as PrismaPost, Like } from '@prisma/client';
 import ClientTimezoneDate from '../components/ClientTimezoneDate';
 import DeletePostBtn from './DeletePostBtn';
 import { getServerSession } from "next-auth";
@@ -11,15 +11,21 @@ type Author = {
   name: string | null;
   image: string | null;
 };
-type PostWithAuthor = PrismaPost & {
+type LikeWithUser = Like & {
+  user: {
+    name: string | null;
+  };
+};
+type PostWithAuthorAndLikes = PrismaPost & {
   author: Author | null;
+  likes: LikeWithUser[]
 };
 interface PostCardProps {
-  post: PostWithAuthor;
+  post: PostWithAuthorAndLikes;
 }
 
 const PostCard: React.FC<PostCardProps> = async ({ post }) => {
-  const { id, title, content, createdAt, updatedAt, author, authorId } = post;
+  const { id, title, content, createdAt, updatedAt, author, authorId, likes } = post;
   const session = await getServerSession(authOptions)
   const isSameDate = new Date(createdAt).getTime() === new Date(updatedAt).getTime();
   const mostRecentDate = isSameDate ? createdAt : (new Date(updatedAt).getTime() > new Date(createdAt).getTime() ? updatedAt : createdAt);
@@ -59,7 +65,7 @@ const PostCard: React.FC<PostCardProps> = async ({ post }) => {
         </Flex>
         <Flex justify='between' style={{ backgroundColor: "#d8f4f609" }} className='px-3 py-2'>
           <Flex>
-            <LikePostBtn />
+            <LikePostBtn likes={likes} />
           </Flex>
           <Flex>
             Placeholder2
