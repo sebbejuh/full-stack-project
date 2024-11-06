@@ -32,7 +32,9 @@ const LikePostBtn = ({ likes }: LikeBtnProps) => {
         <IconButton variant="solid" className='hover:cursor-pointer w-full px-2 gap-1' disabled={!session}>
           <AiOutlineLike />
           <Text size='1' >Like</Text>
-          <Text size='1' >({likeCount})</Text>
+          {likeCount > 0 &&
+            <Text size='1'>{likeCount}</Text>
+          }
         </IconButton>
       </Tooltip>
     </Skeleton >
