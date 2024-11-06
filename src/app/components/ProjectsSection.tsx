@@ -11,7 +11,7 @@ const ProjectsSection = () => {
       <Flex justify='center' wrap='wrap' gap='5' className='w-full py-6'>
 
         <Flex className='w-full lg:w-1/4 items-center lg:items-start justify-center lg:justify-start'>
-          <Card className='min-h-[619px]'>
+          <Card className='md:min-h-[619px] lg:min-h-[619px]'>
             <Flex wrap='wrap' gap='3' direction='column' className='items-center justify-center' >
               <Flex>
                 <Link href='/posts'>
@@ -51,7 +51,7 @@ const ProjectsSection = () => {
         </Flex>
 
         <Flex className='w-full lg:w-1/4 items-center lg:items-start justify-center lg:justify-start'>
-          <Card className='min-h-[619px]'>
+          <Card className='md:min-h-[619px] lg:min-h-[619px]'>
             <Flex wrap='wrap' gap='3' direction='column' className='items-center justify-center' >
               <Flex>
                 <Link href='https://sebbejuh.github.io/webshop-ts/' passHref legacyBehavior>
