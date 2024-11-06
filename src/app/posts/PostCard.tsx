@@ -68,7 +68,7 @@ const PostCard: React.FC<PostCardProps> = async ({ post }) => {
             <LikePostBtn likes={likes} />
           </Flex>
           <Flex>
-            Placeholder2
+
           </Flex>
         </Flex >
       </Card>
