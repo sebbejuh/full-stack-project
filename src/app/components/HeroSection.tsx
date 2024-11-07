@@ -31,7 +31,7 @@ const HeroSection = () => {
         </Flex>
         <Flex wrap='wrap' className='w-full lg:w-1/2 items-center lg:items-start justify-center lg:justify-end pb-6'>
           <Flex wrap='wrap' justify='center' direction='column' align='center' className='items-center'>
-            <Heading as='h2' className='pt-6 pb-16 text-4xl font-thin tracking-tight lg:mt-16 lg:text-7xl'>My Skills</Heading>
+            <Heading as='h2' className='pt-6 pb-10 text-4xl font-thin tracking-tight lg:mt-16 lg:text-7xl'>My Skills</Heading>
             <Grid className='grid grid-cols-2 grid-rows-7 md:grid-cols-3 md:grid-rows-6 lg:grid-cols-3 lg:grid-rows-5 gap-4'>
               <Card size='2' className='transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-400 ...'><Flex gap='1' align='center' justify='center'><SiTypescript size='1.35rem' /><Text>TypeScript</Text></Flex></Card>
               <Card size='2' className='transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-400 ...'><Flex gap='1' align='center' justify='center'><FaHtml5 size='1.35rem' /><Text>HTML</Text></Flex></Card>
