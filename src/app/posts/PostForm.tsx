@@ -93,8 +93,8 @@ const PostForm = () => {
                 onChange={(e) => setTitle(e.target.value)}
               />
             </Form.Control>
-            <Form.Message className={`text-[12px] ${title.length > 140 ? 'text-red-600' : 'text-black-600'} opacity-90 justify-self-end pt-0.5`}>
-              {title.length} / 140
+            <Form.Message className={`text-[12px] ${title.length > 60 ? 'text-red-600' : 'text-black-600'} opacity-90 justify-self-end pt-0.5`}>
+              {title.length} / 60
             </Form.Message>
           </Form.Field>
           <Form.Field className='mb-2.5 grid max-w-[600px] w-full' name='content'>
