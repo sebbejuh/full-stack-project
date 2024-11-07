@@ -2,6 +2,7 @@ import authOptions from "@/app/auth/authOptions";
 import prisma from '../../../../prisma/prisma'
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
+import { postSchema } from "@/app/components/validationSchema";
 
 export async function POST(request: NextRequest) {
   const session = await getServerSession(authOptions);
@@ -9,7 +10,14 @@ export async function POST(request: NextRequest) {
   if (!session)
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const body = await request.json();
-// TODO add zod validation
+
+  const validationResult = postSchema.safeParse(body);
+
+  if (!validationResult.success) {
+    const errors = validationResult.error.errors.map(err => err.message);
+    return NextResponse.json({ error: 'Validation failed', details: errors }, { status: 400 });
+  }
+
   if (!body.title || !body.content || !body.userId) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
   }
