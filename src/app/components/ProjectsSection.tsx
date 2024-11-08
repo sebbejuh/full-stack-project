@@ -1,21 +1,29 @@
 import { Flex, Text, Heading, Card, Badge, Button, Inset } from '@radix-ui/themes';
-import PostsApp from '../public/PostsApp.png'
-import WebshopImage from '../public/WebshopImage.png'
+import PostsApp from '../../../public/PostsApp.png'
+import WebshopImage from '../../../public/WebshopImage.png'
 import Link from 'next/link';
 import { FaGithub } from "react-icons/fa";
+import Image from 'next/image'
 
 const ProjectsSection = () => {
   return (
-    <Flex direction='column' justify='center' className='border-b border-neutral-900 pb-4 lg:mb35 w-full items-center'>
-      <Heading as='h2' className='text-4xl lg:text-6xl pb-3 lg:pb-6 font-thin tracking-tight'>Deployed Projects</Heading>
-      <Flex justify='center' wrap='wrap' className='w-full py-6 items-stretch gap-y-8 gap-x-20'>
+    <Flex direction='column' className='border-b border-neutral-900 pb-4 lg:mb35 items-center'>
+      <Heading as='h2' className='text-4xl lg:text-6xl pb-3 lg:pb-6 lg:pt-3 font-thin tracking-tight'>Deployed Projects</Heading>
+      <Flex justify='center' wrap='wrap' className='py-6 gap-y-8 gap-x-20 flex-col lg:flex-row items-center lg:items-start'>
 
-        <Flex className='w-full md:w-3/5 lg:w-1/3 items-center lg:items-start justify-center lg:justify-start'>
-          <Card className='flex md:min-h-[619px] lg:min-h-[619px] h-full items-start justify-start flex-wrap flex-auto gap-3 flex-col'>
+        <Flex wrap='wrap' className='w-full md:w-3/5 lg:w-1/3 items-center lg:items-start justify-center lg:justify-start'>
+          <Card className='flex h-full lg:min-h-[725px] items-start justify-start flex-wrap flex-auto gap-3 flex-col'>
             <Inset clip="padding-box" side="top" pb="current">
               <Flex>
                 <Link href='/posts'>
-                  <img src={PostsApp.src} alt='Posts App Image' className='transition duration-300 ease-in-out hover:scale-105 rounded-lg' />
+                  <Image
+                    src={PostsApp}
+                    alt='Posts App Image'
+                    className='transition duration-300 ease-in-out hover:scale-105 rounded-t-lg'
+                    width={683}
+                    height={448}
+                    placeholder='blur'
+                  />
                 </Link>
               </Flex>
             </Inset>
@@ -31,7 +39,7 @@ const ProjectsSection = () => {
                 <Text size='3' className='max-w-xl font-light'>
                   Deployed on this very website using Vercel! <br />
                   Users can login and register using their google account,
-                  they can create posts, delete their own posts and even delete their own accounts with all their saved data & contributions!
+                  they can create posts, delete their own posts and even delete their own accounts along with all their saved data & contributions!
                   <br />
                   <br />
                   Coming: Functionality to like and comment on posts.
@@ -50,13 +58,20 @@ const ProjectsSection = () => {
           </Card>
         </Flex>
 
-        <Flex className='w-full md:w-3/5 lg:w-1/3 items-center lg:items-start justify-center lg:justify-start'>
-          <Card className='flex md:min-h-[619px] lg:min-h-[619px] h-full items-start justify-start flex-wrap flex-auto gap-3 flex-col'>
+        <Flex wrap='wrap' className='w-full md:w-3/5 lg:w-1/3 items-center lg:items-start justify-center lg:justify-start'>
+          <Card className='flex h-full lg:min-h-[725px] items-start justify-start flex-wrap flex-auto gap-3 flex-col'>
             <Inset clip="padding-box" side="top" pb="current">
               <Flex>
                 <Link href='https://sebbejuh.github.io/webshop-ts/' passHref legacyBehavior>
                   <a target='_blank'>
-                    <img src={WebshopImage.src} alt='Webshop App Image' className='transition duration-300 ease-in-out hover:scale-105 rounded-lg' />
+                    <Image
+                      src={WebshopImage}
+                      alt='Webshop App Image'
+                      className='transition duration-300 ease-in-out hover:scale-105 rounded-t-lg'
+                      width={683}
+                      height={448}
+                      placeholder='blur'
+                    />
                   </a>
                 </Link>
               </Flex>
