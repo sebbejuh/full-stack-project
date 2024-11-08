@@ -10,7 +10,10 @@ export default async function Home() {
   return (
     <Flex direction='column' align='center' justify='center'>
       {session &&
-        <Text>Welcome to my portfolio {session?.user?.name}!</Text>
+        <Flex wrap='wrap' justify='center' align='center' direction='column' className='w-full pb-6'>
+          <Text className='items-center justify-self-center'>Welcome to my portfolio</Text>
+          <Text className='items-center justify-self-center'>{session?.user?.name}!</Text>
+        </Flex>
       }
       <HeroSection />
       <ProjectsSection />
