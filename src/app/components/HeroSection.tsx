@@ -7,7 +7,7 @@ import { GrMysql } from "react-icons/gr";
 
 const HeroSection = () => {
   return (
-    <Flex className='border-b border-neutral-900 pb-4 lg:mb35'>
+    <Flex justify='center' className='border-b border-neutral-900 pb-4 lg:mb35 w-full'>
       <Flex wrap='wrap'>
         <Flex wrap='wrap' className='w-full lg:w-1/2 items-center lg:items-start justify-center lg:justify-start'>
           <Flex wrap='wrap' direction='column' className='items-center lg:items-start justify-center lg:justify-start'>
@@ -33,21 +33,21 @@ const HeroSection = () => {
           <Flex wrap='wrap' justify='center' direction='column' align='center' className='items-center'>
             <Heading as='h2' className='pt-6 pb-10 text-4xl font-thin tracking-tight lg:mt-16 lg:text-7xl'>My Skills</Heading>
             <Grid className='grid grid-cols-2 grid-rows-7 md:grid-cols-3 md:grid-rows-6 lg:grid-cols-3 lg:grid-rows-5 gap-4'>
-              <Card size='2' className='transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-400 ...'><Flex gap='1' align='center' justify='center'><SiTypescript size='1.35rem' /><Text>TypeScript</Text></Flex></Card>
-              <Card size='2' className='transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-400 ...'><Flex gap='1' align='center' justify='center'><FaHtml5 size='1.35rem' /><Text>HTML</Text></Flex></Card>
-              <Card size='2' className='transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-400 ...'><Flex gap='1' align='center' justify='center'><SiCss3 size='1.35rem' /><Text>CSS</Text></Flex></Card>
-              <Card size='2' className='transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-400 ...'><Flex gap='1' align='center' justify='center'><FaReact size='1.35rem' /><Text>React</Text></Flex></Card>
-              <Card size='2' className='transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-400 ...'><Flex gap='1' align='center' justify='center'><RiNextjsFill size='1.35rem' /><Text>Next.js</Text></Flex></Card>
-              <Card size='2' className='transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-400 ...'><Flex gap='1' align='center' justify='center'><FaNodeJs size='1.35rem' /><Text>Node.js</Text></Flex></Card>
-              <Card size='2' className='transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-400 ...'><Flex gap='1' align='center' justify='center'><SiPrisma size='1.35rem' /><Text>Prisma</Text></Flex></Card>
-              <Card size='2' className='transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-400 ...'><Flex gap='1' align='center' justify='center'><RiTailwindCssFill size='1.35rem' /><Text>Tailwind</Text></Flex></Card>
-              <Card size='2' className='transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-400 ...'><Flex gap='1' align='center' justify='center'><FaSass size='1.35rem' /><Text>Sass</Text></Flex></Card>
-              <Card size='2' className='transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-400 ...'><Flex gap='1' align='center' justify='center'><GrMysql size='1.35rem' /><Text>MySQL</Text></Flex></Card>
-              <Card size='2' className='transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-400 ...'><Flex gap='1' align='center' justify='center'><SiMongodb size='1.35rem' /><Text>MongoDB</Text></Flex></Card>
-              <Card size='2' className='transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-400 ...'><Flex gap='1' align='center' justify='center'><SiPostgresql size='1.35rem' /><Text>PostgreSQL</Text></Flex></Card>
-              <Card size='2' className='transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-400 ...'><Flex gap='1' align='center' justify='center'><SiExpress size='1.35rem' /><Text>Express</Text></Flex></Card>
-              <Card size='2' className='transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-400 ...'><Flex gap='1' align='center' justify='center'><FaWordpressSimple size='1.35rem' /><Text>Wordpress</Text></Flex></Card>
-              <Card size='2' className='transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-400 ...'><Flex gap='1' align='center' justify='center'><FaGitAlt size='1.35rem' /><Text>Git</Text></Flex></Card>
+              <Card size='2' className='transition ease-in-out delay-25 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-300 ...'><Flex gap='1' align='center' justify='center'><SiTypescript size='1.35rem' /><Text>TypeScript</Text></Flex></Card>
+              <Card size='2' className='transition ease-in-out delay-25 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-300 ...'><Flex gap='1' align='center' justify='center'><FaHtml5 size='1.35rem' /><Text>HTML</Text></Flex></Card>
+              <Card size='2' className='transition ease-in-out delay-25 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-300 ...'><Flex gap='1' align='center' justify='center'><SiCss3 size='1.35rem' /><Text>CSS</Text></Flex></Card>
+              <Card size='2' className='transition ease-in-out delay-25 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-300 ...'><Flex gap='1' align='center' justify='center'><FaReact size='1.35rem' /><Text>React</Text></Flex></Card>
+              <Card size='2' className='transition ease-in-out delay-25 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-300 ...'><Flex gap='1' align='center' justify='center'><RiNextjsFill size='1.35rem' /><Text>Next.js</Text></Flex></Card>
+              <Card size='2' className='transition ease-in-out delay-25 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-300 ...'><Flex gap='1' align='center' justify='center'><FaNodeJs size='1.35rem' /><Text>Node.js</Text></Flex></Card>
+              <Card size='2' className='transition ease-in-out delay-25 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-300 ...'><Flex gap='1' align='center' justify='center'><SiPrisma size='1.35rem' /><Text>Prisma</Text></Flex></Card>
+              <Card size='2' className='transition ease-in-out delay-25 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-300 ...'><Flex gap='1' align='center' justify='center'><RiTailwindCssFill size='1.35rem' /><Text>Tailwind</Text></Flex></Card>
+              <Card size='2' className='transition ease-in-out delay-25 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-300 ...'><Flex gap='1' align='center' justify='center'><FaSass size='1.35rem' /><Text>Sass</Text></Flex></Card>
+              <Card size='2' className='transition ease-in-out delay-25 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-300 ...'><Flex gap='1' align='center' justify='center'><GrMysql size='1.35rem' /><Text>MySQL</Text></Flex></Card>
+              <Card size='2' className='transition ease-in-out delay-25 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-300 ...'><Flex gap='1' align='center' justify='center'><SiMongodb size='1.35rem' /><Text>MongoDB</Text></Flex></Card>
+              <Card size='2' className='transition ease-in-out delay-25 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-300 ...'><Flex gap='1' align='center' justify='center'><SiPostgresql size='1.35rem' /><Text>PostgreSQL</Text></Flex></Card>
+              <Card size='2' className='transition ease-in-out delay-25 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-300 ...'><Flex gap='1' align='center' justify='center'><SiExpress size='1.35rem' /><Text>Express</Text></Flex></Card>
+              <Card size='2' className='transition ease-in-out delay-25 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-300 ...'><Flex gap='1' align='center' justify='center'><FaWordpressSimple size='1.35rem' /><Text>Wordpress</Text></Flex></Card>
+              <Card size='2' className='transition ease-in-out delay-25 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-300 ...'><Flex gap='1' align='center' justify='center'><FaGitAlt size='1.35rem' /><Text>Git</Text></Flex></Card>
             </Grid>
           </Flex>
         </Flex>
