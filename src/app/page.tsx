@@ -8,7 +8,7 @@ export default async function Home() {
   const session = await getServerSession(authOptions)
 
   return (
-    <Flex direction='column' align='center' justify='center' gap='5'>
+    <Flex direction='column' align='center' justify='center'>
       {session &&
         <Text>Welcome to my portfolio {session?.user?.name}!</Text>
       }
