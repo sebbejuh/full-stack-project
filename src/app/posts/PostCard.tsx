@@ -6,6 +6,7 @@ import DeletePostBtn from './DeletePostBtn';
 import { getServerSession } from "next-auth";
 import authOptions from "../auth/authOptions";
 import LikePostBtn from './LikePostBtn';
+import LikeCount from './LikeCount';
 
 type Author = {
   name: string | null;
@@ -45,8 +46,9 @@ const PostCard: React.FC<PostCardProps> = async ({ post }) => {
               />
               <Flex direction='column' gap='1'>
                 <Text size='2' weight='bold'>{author?.name}</Text>
-                <Flex>
-                  <Badge >{isUpdated && 'Updated at'}<ClientTimezoneDate date={mostRecentDate} /></Badge>
+                <Flex gap='2' align='center'>
+                  <Badge variant='surface' className='text-slate-300'>{isUpdated && 'Updated at'}<ClientTimezoneDate date={mostRecentDate} /></Badge>
+                  <LikeCount likes={likes} />
                 </Flex>
               </Flex>
             </Flex>
