@@ -5,7 +5,7 @@ import ClientTimezoneDate from '../components/ClientTimezoneDate';
 import DeletePostBtn from './DeletePostBtn';
 import { getServerSession } from "next-auth";
 import authOptions from "../auth/authOptions";
-import LikePostBtn from './LikePostBtn';
+// import LikePostBtn from './LikePostBtn';
 import LikeCount from './LikeCount';
 
 type Author = {
@@ -67,7 +67,7 @@ const PostCard: React.FC<PostCardProps> = async ({ post }) => {
         </Flex>
         <Flex justify='between' style={{ backgroundColor: "#d8f4f609" }} className='px-3 py-2'>
           <Flex>
-            <LikePostBtn likes={likes} />
+            {/* <LikePostBtn likes={likes} /> */}
           </Flex>
           <Flex>
 
