@@ -43,7 +43,6 @@ const LikePostBtn = ({ likes, postId }: LikeBtnProps) => {
       setIsSubmitting(false)
       return
     }
-    console.log(likes)
 
     try {
       await axios.post('/api/likes', {
