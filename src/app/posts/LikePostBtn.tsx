@@ -50,15 +50,21 @@ const LikePostBtn = ({ likes, postId }: LikeBtnProps) => {
       });
 
       toast.success('Post Liked!')
-      setIsSubmitting(false)
       // router.push('/posts');
       router.refresh();
+      setTimeout(() => {
+        setIsSubmitting(false);
+      }, 3000);
     } catch (error) {
       console.error('Error:', error);
-      toast.error(`Error: ${error instanceof Error ? error.message : 'An unknown error occurred'}`)
-      setIsSubmitting(false)
+      toast.error('Error}')
+      setTimeout(() => {
+        setIsSubmitting(false);
+      }, 3000);
     } finally {
-      setIsSubmitting(false);
+      setTimeout(() => {
+        setIsSubmitting(false);
+      }, 3000);
     }
   }
 
