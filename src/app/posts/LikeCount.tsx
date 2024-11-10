@@ -17,7 +17,10 @@ const generateTooltipContent = (likes: LikeWithUser[]): string => {
     return '0 likes';
   }
   const displayedLikes = likes.slice(0, 4).map(like => like.user.name).filter(Boolean).join(', ');
-  const additionalLikes = likeCount > 4 ? `, and ${likeCount - 4} others have liked this post` : '';
+  if (likeCount <= 4) {
+    return `${displayedLikes} liked this`;
+  }
+  const additionalLikes = `, and ${likeCount - 4} others have liked this`;
   return displayedLikes + additionalLikes;
 }
 
