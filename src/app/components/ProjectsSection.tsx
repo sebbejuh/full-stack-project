@@ -38,10 +38,10 @@ const ProjectsSection = () => {
               <Text size='3' className='max-w-xl font-light'>
                 Deployed on this very website using Vercel! <br />
                 Users can login and register using their google account,
-                they can create posts, delete their own posts and even delete their own accounts along with all their saved data & contributions!
+                they can create posts, like posts, delete their own posts and even delete their own accounts along with all their saved data & contributions!
                 <br />
                 <br />
-                Coming: Functionality to like and comment on posts.
+                Coming: Functionality to comment on posts.
               </Text>
             </Card>
             <Flex wrap='wrap' justify='center' gap='2' className='w-full'>
