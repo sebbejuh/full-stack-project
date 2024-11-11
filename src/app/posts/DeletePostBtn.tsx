@@ -17,7 +17,6 @@ const DeletePostBtn = ({ postId }: { postId: string }) => {
     try {
       setLoading(true);
       await axios.delete("/api/posts/" + postId, {
-        data: { postId }
       });
       toast.success('Post Deleted!')
       router.push("/posts");
