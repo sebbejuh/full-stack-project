@@ -1,7 +1,5 @@
 'use client'
-import { IoTrashBinOutline } from "react-icons/io5";
-import { IconButton, AlertDialog, Flex, Button, Skeleton } from '@radix-ui/themes';
-import Spinner from '@/app/components/Spinner'
+import { AlertDialog, Flex, Button, Skeleton, DropdownMenu, Text } from '@radix-ui/themes';
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -40,13 +38,22 @@ const DeletePostBtn = ({ postId }: { postId: string }) => {
   return (
     <>
       <AlertDialog.Root>
-        <Skeleton loading={status === 'loading'}>
-          <AlertDialog.Trigger>
-            <IconButton variant="solid" color='tomato' size='1' className='hover:cursor-pointer' disabled={isLoading || error}>
-              {isLoading ? <Spinner /> : <IoTrashBinOutline />}
-            </IconButton>
-          </AlertDialog.Trigger>
-        </Skeleton >
+        <DropdownMenu.Root>
+          <Skeleton loading={status === 'loading'}>
+            <DropdownMenu.Trigger>
+              <Button size='2' variant="soft" className='cursor-pointer'>
+                <DropdownMenu.TriggerIcon />
+              </Button>
+            </DropdownMenu.Trigger>
+          </Skeleton >
+          <DropdownMenu.Content>
+            <DropdownMenu.Item color="red">
+              <AlertDialog.Trigger>
+                <Text className='cursor-pointer'>Delete</Text>
+              </AlertDialog.Trigger>
+            </DropdownMenu.Item>
+          </DropdownMenu.Content>
+        </DropdownMenu.Root>
         <AlertDialog.Content>
           <AlertDialog.Title>Confirm Deletion</AlertDialog.Title>
           <AlertDialog.Description size="2">
