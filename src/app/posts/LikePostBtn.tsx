@@ -23,7 +23,6 @@ const LikePostBtn = ({ likes, postId }: LikeBtnProps) => {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-
   const handleLike = async () => {
     setIsSubmitting(true)
     if (!session) {
@@ -37,11 +36,30 @@ const LikePostBtn = ({ likes, postId }: LikeBtnProps) => {
       setIsSubmitting(false)
       return;
     }
+    const foundLike = likes.find(like => like.userId === session.user?.id);
+    //if post have been liked by user before, deletes the like
+    if (foundLike) {
+      try {
+        await axios.delete('/api/likes/' + foundLike.id, {
+        });
 
-    if (likes.some(like => like.userId === session.user?.id)) {
-      toast.error('You have already liked this post')
-      setIsSubmitting(false)
-      return
+        toast.success('Post Unliked!')
+        router.refresh();
+        setTimeout(() => {
+          setIsSubmitting(false);
+        }, 2000);
+      } catch (error) {
+        console.error('Error:', error);
+        toast.error('Error}')
+        setTimeout(() => {
+          setIsSubmitting(false);
+        }, 2000);
+      } finally {
+        setTimeout(() => {
+          setIsSubmitting(false);
+        }, 2000);
+        return;
+      }
     }
 
     try {
@@ -50,21 +68,20 @@ const LikePostBtn = ({ likes, postId }: LikeBtnProps) => {
       });
 
       toast.success('Post Liked!')
-      // router.push('/posts');
       router.refresh();
       setTimeout(() => {
         setIsSubmitting(false);
-      }, 3000);
+      }, 2000);
     } catch (error) {
       console.error('Error:', error);
       toast.error('Error}')
       setTimeout(() => {
         setIsSubmitting(false);
-      }, 3000);
+      }, 2000);
     } finally {
       setTimeout(() => {
         setIsSubmitting(false);
-      }, 3000);
+      }, 2000);
     }
   }
 
