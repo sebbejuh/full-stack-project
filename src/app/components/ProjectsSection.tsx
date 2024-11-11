@@ -40,7 +40,8 @@ const ProjectsSection = () => {
               <Flex direction='column' align='center' justify='center' wrap='wrap'>
                 <Text size='3' className='font-light'>Login and register using google account.</Text>
                 <Text size='3' className='font-light'>Delete user account together with all saved data.</Text>
-                <Text size='3' className='font-light'>Create posts, Like posts & Delete own posts.</Text>
+                <Text size='3' className='font-light'>Create posts & Delete own posts.</Text>
+                <Text size='3' className='font-light'>Like posts & Unlike posts.</Text>
               </Flex>
               <Text size='2' className='font-light'>
                 Coming: Functionality to comment on posts.
@@ -58,7 +59,7 @@ const ProjectsSection = () => {
           </Flex>
         </Card>
 
-        <Card className='flex shrink-0 grow-0 sm:w-4/5 md:w-3/5 lg:w-1/3 max-w-[683px] h-full lg:min-h-[741px] items-center lg:items-start justify-center lg:justify-start flex-wrap flex-auto gap-3 flex-col overflow-hidden'>
+        <Card className='flex shrink-0 grow-0 sm:w-4/5 md:w-3/5 lg:w-1/3 max-w-[683px] h-full lg:min-h-[766px] items-center lg:items-start justify-center lg:justify-start flex-wrap flex-auto gap-3 flex-col overflow-hidden'>
           <Inset clip="padding-box" side="top" pb="current">
             <Flex>
               <Link href='https://sebbejuh.github.io/webshop-ts/' passHref legacyBehavior>
