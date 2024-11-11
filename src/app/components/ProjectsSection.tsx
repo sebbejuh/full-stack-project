@@ -27,36 +27,38 @@ const ProjectsSection = () => {
             </Flex>
           </Inset>
           <Flex gap='3' direction='column' justify='center' className='items-center w-full'>
-            <Heading as='h3' className='text-1xl font-thin'>Posts App (in progress)</Heading>
+            <Heading as='h3' className='text-1xl font-thin'>Posts App <span className='text-sm'>(in progress)</span></Heading>
             <Heading size='3' as='h4' className='font-thin'>Full-stack social media web app</Heading>
             <Link href='https://github.com/sebbejuh/full-stack-project' passHref legacyBehavior>
               <a target='_blank'>
                 <Button color='purple' className='cursor-pointer'><FaGithub size='1.35rem' />Github</Button>
               </a>
             </Link>
-            <Card>
-              <Text size='3' className='max-w-xl font-light'>
-                Deployed on this very website using Vercel! <br />
-                Users can login and register using their google account,
-                they can create posts, like posts, delete their own posts and even delete their own accounts along with all their saved data & contributions!
-                <br />
-                <br />
+            <Text size='3' className='max-w-xl font-light'>Deployed on this very website using Vercel!</Text>
+            <Card className='flex flex-col justify-center text-center gap-2 w-full'>
+              <Heading size='5' as='h5' className='font-thin underline'>Features</Heading>
+              <Flex direction='column' align='center' justify='center' wrap='wrap'>
+                <Text size='3' className='font-light'>Login and register using google account.</Text>
+                <Text size='3' className='font-light'>Delete user account together with all saved data.</Text>
+                <Text size='3' className='font-light'>Create posts, Like posts & Delete own posts.</Text>
+              </Flex>
+              <Text size='2' className='font-light'>
                 Coming: Functionality to comment on posts.
               </Text>
             </Card>
             <Flex wrap='wrap' justify='center' gap='2' className='w-full'>
-              <Badge size='3' variant="solid">TypeScript</Badge>
-              <Badge size='3' variant="solid" color='purple'>Next.js</Badge>
-              <Badge size='3' variant="solid" color='jade'>PostgreSQL</Badge>
-              <Badge size='3' variant="solid" color='crimson'>PrismaORM</Badge>
-              <Badge size='3' variant="solid" color='grass'>Tailwind</Badge>
-              <Badge size='3' variant="solid" color='cyan'>Radix-ui</Badge>
-              <Badge size='3' variant="solid" color='amber'>NextAuth</Badge>
+              <Badge size='3' variant="surface">TypeScript</Badge>
+              <Badge size='3' variant="surface" color='purple'>Next.js</Badge>
+              <Badge size='3' variant="surface" color='jade'>PostgreSQL</Badge>
+              <Badge size='3' variant="surface" color='crimson'>PrismaORM</Badge>
+              <Badge size='3' variant="surface" color='grass'>Tailwind</Badge>
+              <Badge size='3' variant="surface" color='cyan'>Radix-ui</Badge>
+              <Badge size='3' variant="surface" color='amber'>NextAuth</Badge>
             </Flex>
           </Flex>
         </Card>
 
-        <Card className='flex shrink-0 grow-0 sm:w-4/5 md:w-3/5 lg:w-1/3 max-w-[683px] h-full lg:min-h-[725px] items-center lg:items-start justify-center lg:justify-start flex-wrap flex-auto gap-3 flex-col overflow-hidden'>
+        <Card className='flex shrink-0 grow-0 sm:w-4/5 md:w-3/5 lg:w-1/3 max-w-[683px] h-full lg:min-h-[741px] items-center lg:items-start justify-center lg:justify-start flex-wrap flex-auto gap-3 flex-col overflow-hidden'>
           <Inset clip="padding-box" side="top" pb="current">
             <Flex>
               <Link href='https://sebbejuh.github.io/webshop-ts/' passHref legacyBehavior>
@@ -81,18 +83,23 @@ const ProjectsSection = () => {
                 <Button color='purple' className='cursor-pointer'><FaGithub size='1.35rem' />Github</Button>
               </a>
             </Link>
-            <Card>
-              <Text size='3' className='max-w-xl font-light'>
-                Deployed using GitHub Pages! <br />
-                Created without using a database, instead storing user actions in localstorage and accessing products from a JSON document.<br />
-                Users can add products to cart and remove products from cart. They can create orders from cart and delete their orders on their account page.
+            <Text size='3' className='max-w-xl font-light'>Deployed using GitHub Pages!</Text>
+            <Card className='flex flex-col justify-center text-center gap-2 w-full'>
+              <Heading size='5' as='h5' className='font-thin underline'>Features</Heading>
+              <Flex direction='column' align='center' justify='center' wrap='wrap'>
+                <Text size='3' className='font-light'>Add items to cart, Remove items from cart.</Text>
+                <Text size='3' className='font-light'>Change amount of items in cart which updates price.</Text>
+                <Text size='3' className='font-light'>Create orders from cart, Delete orders from user.</Text>
+              </Flex>
+              <Text size='2' className='font-light'>
+                Stores user actions in local storage & accesses products from JSON document.
               </Text>
             </Card>
             <Flex wrap='wrap' justify='center' gap='2' className='w-full'>
-              <Badge size='3' variant="solid">TypeScript</Badge>
-              <Badge size='3' variant="solid" color='iris'>React.js</Badge>
-              <Badge size='3' variant="solid" color='crimson'>Sass</Badge>
-              <Badge size='3' variant="solid" color='tomato'>ReactContext</Badge>
+              <Badge size='3' variant="surface">TypeScript</Badge>
+              <Badge size='3' variant="surface" color='iris'>React.js</Badge>
+              <Badge size='3' variant="surface" color='crimson'>Sass</Badge>
+              <Badge size='3' variant="surface" color='tomato'>ReactContext</Badge>
             </Flex>
           </Flex>
         </Card>
