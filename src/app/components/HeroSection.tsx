@@ -15,19 +15,19 @@ const HeroSection = () => {
             <motion.h1
               whileInView={{ opacity: 1, x: 0 }}
               initial={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.5, delay: 0 }}
+              transition={{ duration: 0.75, delay: 0 }}
               className='pb-16 text-6xl font-thin tracking-tight lg:mt-16 lg:text-8xl'>Sebastian Locksenius</motion.h1>
             <motion.span
               whileInView={{ opacity: 1, x: 0 }}
               initial={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              transition={{ duration: 0.75, delay: 0.1 }}
               className='bg-gradient-to-r from-radix-indigo-9 via-radix-indigo-7 to-radix-indigo-3 bg-clip-text text-4xl tracking-tight text-transparent'>
               Frontend Developer
             </motion.span>
             <motion.p
               whileInView={{ opacity: 1, x: 0 }}
               initial={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: 0.75, delay: 0.2 }}
               className='my-2 max-w-xl py-6 font-light tracking-tighter'>
               Developer with skills across the stack.
               I take pride in my work and communicate
@@ -47,12 +47,12 @@ const HeroSection = () => {
             <motion.h2
               whileInView={{ opacity: 1, x: 0 }}
               initial={{ opacity: 0, x: 100 }}
-              transition={{ duration: 0.5, delay: 0 }}
+              transition={{ duration: 0.75, delay: 0 }}
               className='pt-6 pb-10 text-4xl font-thin tracking-tight lg:mt-16 lg:text-6xl'>Skills</motion.h2>
             <motion.div
               whileInView={{ opacity: 1, x: 0 }}
               initial={{ opacity: 0, x: 100 }}
-              transition={{ duration: 0.5, delay: 0.15 }}
+              transition={{ duration: 0.75, delay: 0.15 }}
             >
               <div className="grid grid-cols-2 grid-rows-7 md:grid-cols-3 md:grid-rows-6 lg:grid-cols-3 lg:grid-rows-5 gap-4">
                 {[
