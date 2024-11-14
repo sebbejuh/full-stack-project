@@ -4,7 +4,7 @@ import authOptions from './auth/authOptions';
 import HeroSection from './components/HeroSection';
 import ProjectsSection from './components/ProjectsSection';
 
-export default async function Home() {
+const Home = async () => {
   const session = await getServerSession(authOptions)
 
   return (
@@ -20,3 +20,4 @@ export default async function Home() {
     </Flex>
   );
 }
+export default Home;
