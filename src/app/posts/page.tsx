@@ -1,8 +1,9 @@
 import prisma from '../../../prisma/prisma';
 import PostCard from './PostCard';
 import PostForm from './PostForm';
+import SortPosts from './SortPosts';
 import { Post as PrismaPost, Like } from '@prisma/client';
-import { Flex, Heading } from '@radix-ui/themes';
+import { Flex, Heading, Box } from '@radix-ui/themes';
 import type { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
@@ -20,9 +21,14 @@ type PostWithAuthorAndLikes = PrismaPost & {
   author: Author | null;
   likes: LikeWithUser[];
 };
+interface SearchParams {
+  sortPosts: string;
+}
 
-async function getPosts(): Promise<PostWithAuthorAndLikes[]> {
-  const posts = await prisma.post.findMany({
+const Posts = async ({ searchParams }: { searchParams: SearchParams }) => {
+  const sortOrder = searchParams.sortPosts === 'date_asc' ? 'asc' : 'desc';
+
+  const posts: PostWithAuthorAndLikes[] = await prisma.post.findMany({
     include: {
       author: {
         select: { name: true, image: true }
@@ -30,36 +36,39 @@ async function getPosts(): Promise<PostWithAuthorAndLikes[]> {
       likes: {
         include: {
           user: {
-            select: { name: true, }
+            select: { name: true }
           }
         }
       }
-    }
-  })
-  return posts
-}
-
-export default async function Posts() {
-  const posts: PostWithAuthorAndLikes[] = await getPosts();
+    },
+    orderBy: {
+      createdAt: sortOrder,
+    },
+  });
 
   return (
-    <Flex direction='column' align='center' gap='5'>
+    <Flex direction='column' align='center' gap='4'>
       <Heading as='h1' size='6'>Posts App</Heading>
-      <Flex direction='column' align='center' justify='center' width='100%' >
+      <Flex direction='column' align='center' justify='center' width='100%' className='py-2'>
         <PostForm />
       </Flex>
+      <Flex direction='column' align='center' justify='center' width='100%'>
+        <Box width='100%' maxWidth='600px'>
+          <Flex justify='end' align='center'>
+            <SortPosts />
+          </Flex>
+        </Box>
+      </Flex>
       <Flex direction='column' align='center' justify='center' width='100%' gap='4'>
-        {
-          posts.slice().reverse().map((post) => {
-            return (
-              <PostCard key={post.id} post={post} />
-            )
-          })
-        }
+        {posts.map((post) => (
+          <PostCard key={post.id} post={post} />
+        ))}
       </Flex>
     </Flex>
   );
 }
+export default Posts;
+
 export const metadata: Metadata = {
   title: 'Posts App',
   description: 'A web application where users can create posts.',
