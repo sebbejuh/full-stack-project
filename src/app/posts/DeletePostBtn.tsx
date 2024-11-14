@@ -37,7 +37,7 @@ const DeletePostBtn = ({ postId }: { postId: string }) => {
   return (
     <>
       <AlertDialog.Root>
-        <DropdownMenu.Root>
+        <DropdownMenu.Root modal={false}>
           <Skeleton loading={status === 'loading'}>
             <DropdownMenu.Trigger>
               <Button size='2' variant="soft" className='cursor-pointer'>
