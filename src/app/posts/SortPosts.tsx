@@ -28,7 +28,7 @@ const SortPosts = () => {
     <DropdownMenu.Root modal={false}>
       <Skeleton loading={status === 'loading'}>
         <DropdownMenu.Trigger>
-          <Button size='2' color="gray" variant="outline" highContrast className='cursor-pointer'>
+          <Button size='2' variant="outline" highContrast className='cursor-pointer'>
             {sortLabels[currentSort] || 'Latest'}
             <MdSort />
           </Button>
