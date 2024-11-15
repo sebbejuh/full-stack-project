@@ -9,17 +9,21 @@ const SortPosts = () => {
   const { status, } = useSession();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const currentSort = searchParams.get('sortPosts') || 'date_desc';
+  const currentSort = searchParams.get('sortPosts') || '';
 
   const handleSort = (sortType: string) => {
     const params = new URLSearchParams(searchParams.toString());
-    params.set('sortPosts', sortType);
+    if (sortType === '') {
+      params.delete('sortPosts'); //remove parameter if the sortType is an empty string
+    } else {
+      params.set('sortPosts', sortType);
+    }
     router.push(`?${params.toString()}`);
   };
 
   const sortLabels: { [key: string]: string } = {
-    date_desc: 'Latest',
-    date_asc: 'Oldest',
+    date_desc: 'New',
+    date_asc: 'Old',
     like_amount: 'Most Liked',
     author: 'User',
   };
@@ -28,22 +32,22 @@ const SortPosts = () => {
     <DropdownMenu.Root modal={false}>
       <Skeleton loading={status === 'loading'}>
         <DropdownMenu.Trigger>
-          <Button size='2' variant="outline" highContrast className='cursor-pointer'>
-            {sortLabels[currentSort] || 'Latest'}
+          <Button size='2' variant="outline" className='cursor-pointer'>
+            {sortLabels[currentSort] || 'Sort'}
             <MdSort />
           </Button>
         </DropdownMenu.Trigger>
       </Skeleton >
       <DropdownMenu.Content>
-        <DropdownMenu.Label className='cursor-pointer'>
+        <DropdownMenu.Item className='cursor-pointer' color='gray' onSelect={() => handleSort('')}>
           Sort by :
-        </DropdownMenu.Label>
+        </DropdownMenu.Item>
         <DropdownMenu.Separator />
         <DropdownMenu.Item className='cursor-pointer' onSelect={() => handleSort('date_desc')}>
-          Latest
+          New
         </DropdownMenu.Item>
         <DropdownMenu.Item className='cursor-pointer' onSelect={() => handleSort('date_asc')}>
-          Oldest
+          Old
         </DropdownMenu.Item>
         <DropdownMenu.Item className='cursor-pointer' onSelect={() => handleSort('like_amount')}>
           Most Liked
