@@ -5,6 +5,7 @@ import { FaHtml5, FaReact, FaNodeJs, FaWordpressSimple, FaGitAlt, FaSass } from 
 import { RiNextjsFill, RiTailwindCssFill } from 'react-icons/ri';
 import { GrMysql } from 'react-icons/gr';
 import { motion } from 'framer-motion'
+import Link from 'next/link';
 
 const HeroSection = () => {
   return (
@@ -17,13 +18,22 @@ const HeroSection = () => {
               initial={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.75, delay: 0 }}
               className='pb-16 text-6xl font-thin tracking-tight lg:mt-16 lg:text-8xl'>Sebastian Locksenius</motion.h1>
-            <motion.span
+            <motion.div
               whileInView={{ opacity: 1, x: 0 }}
               initial={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.75, delay: 0.1 }}
-              className='bg-gradient-to-r from-radix-indigo-9 via-radix-indigo-7 to-radix-indigo-3 bg-clip-text text-4xl tracking-tight text-transparent'>
-              Frontend Developer
-            </motion.span>
+              className='flex gap-5 items-center'>
+              <span className='bg-gradient-to-r from-radix-indigo-3 via-radix-indigo-7 to-radix-indigo-9 bg-clip-text text-4xl tracking-tight text-transparent pb-1'>Frontend Developer</span>
+              <Link href='https://locksenius.my.canva.site/front-end-cv-sebastian-locksenius' passHref legacyBehavior>
+                <a target='_blank'>
+                  <div className="p-3 bg-radix-indigo-10 transition ease-in-out delay-25 hover:scale-110 hover:bg-radix-indigo-10 duration-300">
+                    <Flex gap="1" align="center" justify="center">
+                      <Text>CV / Resume</Text>
+                    </Flex>
+                  </div>
+                </a>
+              </Link>
+            </motion.div>
             <motion.p
               whileInView={{ opacity: 1, x: 0 }}
               initial={{ opacity: 0, x: -100 }}
@@ -72,8 +82,8 @@ const HeroSection = () => {
                   { icon: <FaWordpressSimple size="1.35rem" />, text: 'Wordpress' },
                   { icon: <FaGitAlt size="1.35rem" />, text: 'Git' },
                 ].map((item, index) => (
-                  <div key={index} className="transition ease-in-out delay-25 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-10 duration-300">
-                    <Card size="2">
+                  <div key={index} >
+                    <Card size="2" className="transition ease-in-out delay-25 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-12 duration-300">
                       <Flex gap="1" align="center" justify="center">
                         {item.icon}
                         <Text>{item.text}</Text>
