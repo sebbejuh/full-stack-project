@@ -2,7 +2,7 @@ import prisma from '../../../prisma/prisma';
 import PostCard from './PostCard';
 import PostForm from './PostForm';
 import SortPosts from './SortPosts';
-import { Post as PrismaPost, Like } from '@prisma/client';
+import { Post as PrismaPost, Like, Prisma } from '@prisma/client';
 import { Flex, Heading, Box } from '@radix-ui/themes';
 import type { Metadata } from 'next';
 
@@ -26,7 +26,21 @@ interface SearchParams {
 }
 
 const Posts = async ({ searchParams }: { searchParams: SearchParams }) => {
-  const sortOrder = searchParams.sortPosts === 'date_asc' ? 'asc' : 'desc';
+  let orderBy: Prisma.PostOrderByWithRelationInput;
+
+  if (searchParams.sortPosts === 'like_amount') {
+    //sort by the number of likes in descending order
+    orderBy = { likes: { _count: 'desc' } };
+  } else if (searchParams.sortPosts === 'authorId') {
+    //sort by authorId in descending order
+    orderBy = { authorId: 'desc' };
+  } else if (searchParams.sortPosts === 'date_asc') {
+    //sort by createdAt in ascending order
+    orderBy = { createdAt: 'asc' };
+  } else {
+    //default sorting by createdAt in descending order
+    orderBy = { createdAt: 'desc' };
+  }
 
   const posts: PostWithAuthorAndLikes[] = await prisma.post.findMany({
     include: {
@@ -41,9 +55,7 @@ const Posts = async ({ searchParams }: { searchParams: SearchParams }) => {
         }
       }
     },
-    orderBy: {
-      createdAt: sortOrder,
-    },
+    orderBy,
   });
 
   return (
