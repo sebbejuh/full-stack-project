@@ -15,15 +15,15 @@ const ProjectsSection = () => {
         initial={{ opacity: 0, y: 100 }}
         transition={{ duration: 0.75 }}
         className='text-4xl lg:text-6xl pb-6 lg:pb-12 lg:pt-6 font-thin tracking-tight'>Deployed Projects</motion.h2>
-      <Flex justify='center' wrap='wrap' className='gap-y-8 gap-x-40 flex-col lg:flex-row items-center lg:items-start overflow-hidden lg:pt-5'>
+      <Flex justify='center' wrap='wrap' className='gap-y-8 gap-x-52 flex-col lg:flex-row items-center lg:items-start overflow-hidden lg:pt-5'>
 
         <motion.div
           whileInView={{ opacity: 1, x: 0 }}
           initial={{ opacity: 0, x: -100 }}
           transition={{ duration: 0.75 }}
-          className='flex shrink-0 grow-0 sm:w-4/5 md:w-3/5 lg:w-1/3 max-w-[683px] h-full lg:min-h-[798px] max-w-full'>
+          className='flex shrink-0 grow-0 sm:w-4/5 md:w-3/5 lg:w-1/3 h-full lg:min-h-[798px] max-w-full'>
           <Card className='flex items-center lg:items-start justify-center lg:justify-start flex-wrap flex-auto gap-3 flex-col overflow-hidden'>
-            <Inset clip="padding-box" side="top" pb="current">
+            <Inset side="top" pb="current">
               <Flex>
                 <Link href='/posts'>
                   <Image
@@ -76,9 +76,9 @@ const ProjectsSection = () => {
           whileInView={{ opacity: 1, x: 0 }}
           initial={{ opacity: 0, x: 100 }}
           transition={{ duration: 0.75 }}
-          className='flex shrink-0 grow-0 sm:w-4/5 md:w-3/5 lg:w-1/3 max-w-[683px] h-full lg:min-h-[798px] max-w-full'>
+          className='flex shrink-0 grow-0 sm:w-4/5 md:w-3/5 lg:w-1/3 h-full lg:min-h-[798px] max-w-full'>
           <Card className='flex items-center lg:items-start justify-center lg:justify-start flex-wrap flex-auto gap-3 flex-col overflow-hidden'>
-            <Inset clip="padding-box" side="top" pb="current">
+            <Inset side="top" pb="current" >
               <Flex>
                 <Link href='https://sebbejuh.github.io/webshop-ts/' passHref legacyBehavior>
                   <a target='_blank'>
