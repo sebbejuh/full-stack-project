@@ -85,7 +85,7 @@ const HeroSection = () => {
                   { icon: <FaGitAlt size="1.35rem" />, text: 'Git' },
                 ].map((item, index) => (
                   <div key={index} >
-                    <Card size="2" className="transition ease-in-out delay-25 hover:-translate-y-1 hover:scale-110 hover:bg-radix-indigo-12 duration-300">
+                    <Card size="2" className="transition ease-in-out delay-25 hover:-translate-y-1 hover:scale-110 duration-300">
                       <Flex gap="1" align="center" justify="center">
                         {item.icon}
                         <Text>{item.text}</Text>
