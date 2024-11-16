@@ -1,10 +1,9 @@
-'use client'
 import { Flex, Text, Card, } from '@radix-ui/themes';
 import { SiTypescript, SiCss3, SiPrisma, SiMongodb, SiPostgresql, SiExpress } from 'react-icons/si';
 import { FaHtml5, FaReact, FaNodeJs, FaWordpressSimple, FaGitAlt, FaSass } from 'react-icons/fa';
 import { RiNextjsFill, RiTailwindCssFill } from 'react-icons/ri';
 import { GrMysql } from 'react-icons/gr';
-import { motion } from 'framer-motion'
+import { MotionDiv } from './MotionDiv';
 import Link from 'next/link';
 
 const HeroSection = () => {
@@ -13,12 +12,13 @@ const HeroSection = () => {
       <Flex wrap='wrap'>
         <Flex wrap='wrap' className='w-full lg:w-1/2 items-center lg:items-start justify-center lg:justify-start'>
           <div className='flex flex-col items-center lg:items-start justify-center lg:justify-start flex-wrap'>
-            <motion.h1
+            <MotionDiv
               whileInView={{ opacity: 1, x: 0 }}
               initial={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.75, delay: 0 }}
-              className='pb-16 text-6xl font-thin tracking-tight lg:mt-16 lg:text-8xl'>Sebastian Locksenius</motion.h1>
-            <motion.div
+              transition={{ duration: 0.75, delay: 0 }}>
+              <h1 className='pb-16 text-6xl font-thin tracking-tight lg:mt-16 lg:text-8xl'>Sebastian Locksenius</h1>
+            </MotionDiv>
+            <MotionDiv
               whileInView={{ opacity: 1, x: 0 }}
               initial={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.75, delay: 0.1 }}
@@ -27,39 +27,41 @@ const HeroSection = () => {
               <Link href='https://locksenius.my.canva.site/front-end-cv-sebastian-locksenius' passHref legacyBehavior>
                 <a target='_blank'>
                   <div className="p-3 bg-radix-indigo-10 transition ease-in-out delay-25 hover:scale-110 hover:bg-radix-indigo-10 duration-300">
-                    <Flex gap="1" align="center" justify="center">
-                      <Text>CV / Resume</Text>
+                    <Flex align="center" justify="center">
+                      <Text>Resume</Text>
                     </Flex>
                   </div>
                 </a>
               </Link>
-            </motion.div>
-            <motion.p
+            </MotionDiv>
+            <MotionDiv
               whileInView={{ opacity: 1, x: 0 }}
               initial={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.75, delay: 0.2 }}
-              className='my-2 max-w-xl py-6 font-light tracking-tighter'>
-              Developer with skills across the stack.
-              I take pride in my work and communicate
-              effectively in both my native Swedish and
-              in English. <br />
-              My experience includes
-              working collaboratively in teams, often
-              using agile project management
-              methods. <br />
-              I am passionate about problemsolving and keeping up to date with new
-              technologies and concepts
-            </motion.p>
+              transition={{ duration: 0.75, delay: 0.2 }}>
+              <p className='my-2 max-w-xl py-6 font-light tracking-tighter'>
+                Developer with skills across the stack.
+                I take pride in my work and communicate
+                effectively in both my native Swedish and
+                in English. <br />
+                My experience includes
+                working collaboratively in teams, often
+                using agile project management
+                methods. <br />
+                I am passionate about problemsolving and keeping up to date with new
+                technologies and concepts
+              </p>
+            </MotionDiv>
           </div>
         </Flex>
         <Flex wrap='wrap' className='w-full lg:w-1/2 items-center lg:items-start justify-center lg:justify-end pb-6'>
           <Flex wrap='wrap' justify='center' direction='column' align='center' className='items-center'>
-            <motion.h2
+            <MotionDiv
               whileInView={{ opacity: 1, x: 0 }}
               initial={{ opacity: 0, x: 100 }}
-              transition={{ duration: 0.75, delay: 0 }}
-              className='pt-6 pb-10 text-4xl font-thin tracking-tight lg:mt-16 lg:text-6xl'>Skills</motion.h2>
-            <motion.div
+              transition={{ duration: 0.75, delay: 0 }}>
+              <h2 className='pt-6 pb-10 text-4xl font-thin tracking-tight lg:mt-16 lg:text-6xl'>Skills</h2>
+            </MotionDiv>
+            <MotionDiv
               whileInView={{ opacity: 1, x: 0 }}
               initial={{ opacity: 0, x: 100 }}
               transition={{ duration: 0.75, delay: 0.15 }}
@@ -92,7 +94,7 @@ const HeroSection = () => {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </MotionDiv>
           </Flex>
         </Flex>
       </Flex>

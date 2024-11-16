@@ -1,23 +1,23 @@
-'use client'
 import { Flex, Text, Heading, Card, Badge, Button, Inset } from '@radix-ui/themes';
 import PostsAppImage from '../../../public/PostsAppImage.png'
 import WebshopImage from '../../../public/WebshopImage.png'
 import Link from 'next/link';
 import { FaGithub } from "react-icons/fa";
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { MotionDiv } from './MotionDiv';
 
 const ProjectsSection = () => {
   return (
     <Flex direction='column' className='border-b border-neutral-900 py-8 items-center w-full overflow-hidden'>
-      <motion.h2
+      <MotionDiv
         whileInView={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: 100 }}
-        transition={{ duration: 0.75 }}
-        className='text-4xl lg:text-6xl pb-6 lg:pb-12 lg:pt-6 font-thin tracking-tight'>Deployed Projects</motion.h2>
+        transition={{ duration: 0.75 }}>
+        <h2 className='text-4xl lg:text-6xl pb-6 lg:pb-12 lg:pt-6 font-thin tracking-tight'>Deployed Projects</h2>
+      </MotionDiv>
       <Flex justify='center' wrap='wrap' className='gap-y-8 gap-x-52 flex-col lg:flex-row items-center lg:items-start overflow-hidden lg:pt-5'>
 
-        <motion.div
+        <MotionDiv
           whileInView={{ opacity: 1, x: 0 }}
           initial={{ opacity: 0, x: -100 }}
           transition={{ duration: 0.75 }}
@@ -70,9 +70,9 @@ const ProjectsSection = () => {
               </Flex>
             </Flex>
           </Card>
-        </motion.div>
+        </MotionDiv>
 
-        <motion.div
+        <MotionDiv
           whileInView={{ opacity: 1, x: 0 }}
           initial={{ opacity: 0, x: 100 }}
           transition={{ duration: 0.75 }}
@@ -122,7 +122,7 @@ const ProjectsSection = () => {
               </Flex>
             </Flex>
           </Card>
-        </motion.div>
+        </MotionDiv>
 
       </Flex>
     </Flex>
