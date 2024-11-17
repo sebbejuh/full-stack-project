@@ -10,7 +10,6 @@ const DeletePostBtn = ({ postId }: { postId: string }) => {
   const router = useRouter();
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [deleted, setDeleted] = useState(false);
   const { status, } = useSession();
 
   const deletePost = async () => {
@@ -19,21 +18,14 @@ const DeletePostBtn = ({ postId }: { postId: string }) => {
       await axios.delete("/api/posts/" + postId, {
       });
       toast.success('Post Deleted!')
-      router.push("/posts");
       router.refresh();
       setLoading(false);
-      setDeleted(true)
     } catch (error) {
       toast.error(`Error: ${error instanceof Error ? error.message : 'An unknown error occurred'}`)
       setLoading(false);
       setError(true);
     }
   };
-  if (deleted)
-    return (
-      <>
-      </>
-    )
   return (
     <>
       <AlertDialog.Root>
