@@ -25,7 +25,6 @@ const SortPosts = () => {
     date_desc: 'New',
     date_asc: 'Old',
     like_amount: 'Most Liked',
-    author: 'User',
   };
 
   return (
@@ -51,9 +50,6 @@ const SortPosts = () => {
         </DropdownMenu.Item>
         <DropdownMenu.Item className='cursor-pointer' onSelect={() => handleSort('like_amount')}>
           Most Liked
-        </DropdownMenu.Item>
-        <DropdownMenu.Item className='cursor-pointer' onSelect={() => handleSort('author')}>
-          User
         </DropdownMenu.Item>
       </DropdownMenu.Content>
     </DropdownMenu.Root>
