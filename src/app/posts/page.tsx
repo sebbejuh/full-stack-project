@@ -1,5 +1,5 @@
 import prisma from '../../../prisma/prisma';
-import PostCard from './PostCard';
+import PostList from './PostsList';
 import PostForm from './PostForm';
 import SortPosts from './SortPosts';
 import { Post as PrismaPost, Like, Prisma } from '@prisma/client';
@@ -23,6 +23,7 @@ type PostWithAuthorAndLikes = PrismaPost & {
 };
 interface SearchParams {
   sortPosts: string;
+  page: string;
 }
 
 const Posts = async ({ searchParams }: { searchParams: SearchParams }) => {
@@ -31,9 +32,6 @@ const Posts = async ({ searchParams }: { searchParams: SearchParams }) => {
   if (searchParams.sortPosts === 'like_amount') {
     //sort by the number of likes in descending order
     orderBy = { likes: { _count: 'desc' } };
-  } else if (searchParams.sortPosts === 'authorId') {
-    //sort by authorId in descending order
-    orderBy = { authorId: 'desc' };
   } else if (searchParams.sortPosts === 'date_asc') {
     //sort by createdAt in ascending order
     orderBy = { createdAt: 'asc' };
@@ -41,6 +39,8 @@ const Posts = async ({ searchParams }: { searchParams: SearchParams }) => {
     //default sorting by createdAt in descending order
     orderBy = { createdAt: 'desc' };
   }
+  const page = searchParams.page ? parseInt(searchParams.page, 10) : 1;
+  const pageSize = 10;
 
   const posts: PostWithAuthorAndLikes[] = await prisma.post.findMany({
     include: {
@@ -56,8 +56,9 @@ const Posts = async ({ searchParams }: { searchParams: SearchParams }) => {
       }
     },
     orderBy,
+    take: page * pageSize
   });
-
+  const totalPosts = await prisma.post.count();
   return (
     <Flex direction='column' align='center' gap='4'>
       <Heading as='h1' size='6'>Posts App</Heading>
@@ -71,11 +72,7 @@ const Posts = async ({ searchParams }: { searchParams: SearchParams }) => {
           </Flex>
         </Box>
       </Flex>
-      <Flex direction='column' align='center' justify='center' width='100%' gap='4'>
-        {posts.map((post) => (
-          <PostCard key={post.id} post={post} />
-        ))}
-      </Flex>
+      <PostList posts={posts} totalPosts={totalPosts} />
     </Flex>
   );
 }
