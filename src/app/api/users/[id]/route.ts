@@ -7,7 +7,7 @@ export async function DELETE(req: NextRequest) {
   const session = await getServerSession(authOptions);
 
   if (!session || !session.user || !session.user.id)
-    return NextResponse.json({ error: 'Not logged in' }, { status: 401 });
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const body = await req.json();
   const { userId } = body;
@@ -40,6 +40,7 @@ export async function DELETE(req: NextRequest) {
         accounts: true,
         sessions: true,
         posts: true,
+        likes: true, //should cascade and be deleted with posts but might as well add them
       },
     });
 
