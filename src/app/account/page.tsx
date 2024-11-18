@@ -1,3 +1,4 @@
+import prisma from '../../../prisma/prisma';
 import { Flex, Text, Card, Box, Avatar, Heading } from '@radix-ui/themes';
 import { getServerSession } from 'next-auth';
 import authOptions from '../auth/authOptions';
@@ -8,6 +9,18 @@ export default async function Account() {
 
   if (!session)
     return (<Flex direction='column' align='center' justify='center'><Text>You are not logged in</Text></Flex>)
+
+  const postCount = await prisma.post.count({
+    where: {
+      authorId: session?.user?.id,
+    },
+  });
+  const likeCount = await prisma.like.count({
+    where: {
+      userId: session?.user?.id,
+    },
+  });
+
   return (
     <Flex direction='column' align='center' justify='center' width='100%'>
       <Box width='100%' height='100%' maxWidth='600px'>
@@ -37,6 +50,14 @@ export default async function Account() {
                     className='cursor-pointer'
                     referrerPolicy='no-referrer'
                   />
+                </Flex>
+                <Flex width='100%' gap='3' align='center'>
+                  <Text>Posts:</Text>
+                  <Text size='2'>{postCount}</Text>
+                </Flex>
+                <Flex width='100%' gap='3' align='center'>
+                  <Text>Likes:</Text>
+                  <Text size='2'>{likeCount}</Text>
                 </Flex>
               </Flex>
             </Card>
