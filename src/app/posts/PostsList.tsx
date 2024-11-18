@@ -94,6 +94,7 @@ const PostsList = ({ posts, totalPosts }: PostListProps) => {
           animate='visible'
           transition={{ delay: 0.2, easy: 'easeInOut', duration: 0.5 }}
           viewport={{ amount: 0 }}
+          className='w-full max-w-[600px]'
         >
           <PostCard key={post.id} post={post} />
         </MotionDiv>
