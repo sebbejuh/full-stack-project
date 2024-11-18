@@ -51,8 +51,7 @@ const PostForm = () => {
     try {
       await axios.post('/api/posts', {
         title,
-        content,
-        userId: session.user.id,
+        content
       });
 
       toast.success('Post Created!')
