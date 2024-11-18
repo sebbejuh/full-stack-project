@@ -1,12 +1,17 @@
 'use client'
 import * as Form from '@radix-ui/react-form';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import { Button, Flex, Card, Text, Skeleton } from '@radix-ui/themes';
 import { postSchema } from '../components/validationSchema';
+
+interface ErrorResponse {
+  error: string;
+  details?: string[];
+}
 
 const PostForm = () => {
   const [title, setTitle] = useState('');
@@ -62,7 +67,10 @@ const PostForm = () => {
       router.refresh();
     } catch (error) {
       console.error('Error:', error);
-      toast.error(`Error: ${error instanceof Error ? error.message : 'An unknown error occurred'}`)
+      const axiosError = error as AxiosError<ErrorResponse>;
+      const errorMessage = axiosError.response?.data?.error || 'An unknown error occurred';
+      const errorDetails = axiosError.response?.data?.details?.join(', ') || '';
+      toast.error(`Error: ${errorMessage}${errorDetails ? ` - ${errorDetails}` : ''}`);
       setIsSubmitting(false)
     }
   }

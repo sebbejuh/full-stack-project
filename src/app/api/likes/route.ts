@@ -2,6 +2,7 @@ import authOptions from "@/app/auth/authOptions";
 import prisma from '../../../../prisma/prisma'
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
+import { AxiosError } from 'axios';
 
 export async function POST(request: NextRequest) {
   const session = await getServerSession(authOptions);
@@ -48,6 +49,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(newLike, { status: 201 });
   } catch (error) {
     console.error('Error creating like:', error);
-    return NextResponse.json({ error: 'Error liking post' }, { status: 500 });
+    const axiosError = error as AxiosError<ErrorResponse>;
+    return NextResponse.json({ error: 'Error liking post', details: axiosError.message }, { status: 500 });
   }
 }

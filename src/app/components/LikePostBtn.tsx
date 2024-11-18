@@ -3,7 +3,7 @@ import { IconButton, Skeleton, Text, Tooltip } from '@radix-ui/themes';
 import { AiOutlineLike } from "react-icons/ai";
 import { useSession } from 'next-auth/react';
 import { Like } from '@prisma/client';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -50,7 +50,10 @@ const LikePostBtn = ({ likes, postId }: LikeBtnProps) => {
         }, 2000);
       } catch (error) {
         console.error('Error:', error);
-        toast.error('Error}')
+        const axiosError = error as AxiosError<ErrorResponse>;
+        const errorMessage = axiosError.response?.data?.error || 'An unknown error occurred';
+        const errorDetails = axiosError.response?.data?.details?.join(', ') || '';
+        toast.error(`Error: ${errorMessage}${errorDetails ? ` - ${errorDetails}` : ''}`);
         setTimeout(() => {
           setIsSubmitting(false);
         }, 2000);
@@ -74,7 +77,10 @@ const LikePostBtn = ({ likes, postId }: LikeBtnProps) => {
       }, 2000);
     } catch (error) {
       console.error('Error:', error);
-      toast.error('Error}')
+      const axiosError = error as AxiosError<ErrorResponse>;
+      const errorMessage = axiosError.response?.data?.error || 'An unknown error occurred';
+      const errorDetails = axiosError.response?.data?.details?.join(', ') || '';
+      toast.error(`Error: ${errorMessage}${errorDetails ? ` - ${errorDetails}` : ''}`);
       setTimeout(() => {
         setIsSubmitting(false);
       }, 2000);

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from '../../../../../prisma/prisma';
 import { getServerSession } from "next-auth";
 import authOptions from "@/app/auth/authOptions";
+import { AxiosError } from 'axios';
 
 export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
   const session = await getServerSession(authOptions);
@@ -31,7 +32,9 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
 
     return NextResponse.json({ message: 'Post deleted successfully' }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ error: 'Error deleting post', details: error }, { status: 500 });
+    console.error('Error deleting post:', error);
+    const axiosError = error as AxiosError<ErrorResponse>;
+    return NextResponse.json({ error: 'Error deleting post', details: axiosError.message }, { status: 500 });
   }
 
 }
