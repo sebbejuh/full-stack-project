@@ -5,8 +5,8 @@ import { Post as PrismaPost, Like } from '@prisma/client';
 import ClientTimezoneDate from '../components/ClientTimezoneDate';
 import DeletePostBtn from './DeletePostBtn';
 import { useSession } from 'next-auth/react';
-import LikePostBtn from './LikePostBtn';
-import LikeCount from './LikeCount';
+import LikePostBtn from '../components/LikePostBtn';
+import LikeCount from '../components/LikeCount';
 
 type Author = {
   name: string | null;
