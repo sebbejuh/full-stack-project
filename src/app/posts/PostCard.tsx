@@ -1,5 +1,5 @@
 'use client'
-import { Flex, Text, Card, Box, Avatar, Badge, Skeleton } from '@radix-ui/themes';
+import { Flex, Text, Card, Box, Avatar, Badge, Skeleton, Button } from '@radix-ui/themes';
 import { PersonIcon } from "@radix-ui/react-icons";
 import { Post as PrismaPost, Like } from '@prisma/client';
 import ClientTimezoneDate from '../components/ClientTimezoneDate';
@@ -7,6 +7,7 @@ import DeletePostBtn from './DeletePostBtn';
 import { useSession } from 'next-auth/react';
 import LikePostBtn from '../components/LikePostBtn';
 import LikeCount from '../components/LikeCount';
+import Link from 'next/link'
 
 type Author = {
   name: string | null;
@@ -73,7 +74,11 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
               <LikePostBtn likes={likes} postId={id} />
             </Flex>
             <Flex>
-
+              <Link href={'/posts/' + id.toString()}>
+                <Button variant='outline' className='cursor-pointer'>
+                  Comments
+                </Button>
+              </Link>
             </Flex>
           </Flex >
         </Card>
