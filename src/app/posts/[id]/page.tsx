@@ -5,9 +5,9 @@ import { notFound } from "next/navigation";
 import ClientTimezoneDate from '../../components/ClientTimezoneDate';
 import { getServerSession } from 'next-auth';
 import authOptions from '../../auth/authOptions';
-import LikeCount from '../../components/LikeCount';
+import LikeCount from '../LikeCount';
 import PostDropDownBtn from '../PostDropDownBtn';
-import LikePostBtn from '../../components/LikePostBtn';
+import LikePostBtn from '../LikePostBtn';
 
 interface Props {
   params: { id: string };

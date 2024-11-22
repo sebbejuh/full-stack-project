@@ -5,8 +5,8 @@ import { Post as PrismaPost, Like } from '@prisma/client';
 import ClientTimezoneDate from '../components/ClientTimezoneDate';
 import PostDropDownBtn from './PostDropDownBtn';
 import { useSession } from 'next-auth/react';
-import LikePostBtn from '../components/LikePostBtn';
-import LikeCount from '../components/LikeCount';
+import LikePostBtn from './LikePostBtn';
+import LikeCount from './LikeCount';
 import Link from 'next/link'
 
 type Author = {
