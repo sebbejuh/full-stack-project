@@ -3,7 +3,7 @@ import { Flex, Text, Card, Box, Avatar, Badge, Skeleton, Button } from '@radix-u
 import { PersonIcon } from "@radix-ui/react-icons";
 import { Post as PrismaPost, Like } from '@prisma/client';
 import ClientTimezoneDate from '../components/ClientTimezoneDate';
-import DeletePostBtn from './DeletePostBtn';
+import PostDropDownBtn from './PostDropDownBtn';
 import { useSession } from 'next-auth/react';
 import LikePostBtn from '../components/LikePostBtn';
 import LikeCount from '../components/LikeCount';
@@ -57,7 +57,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
                 </Flex>
               </Flex>
               {session && session.user?.id == authorId && (
-                <DeletePostBtn postId={id} />
+                <PostDropDownBtn postId={id} />
               )}
             </Flex>
             <Flex direction='column' gap='1'>

@@ -6,7 +6,7 @@ import ClientTimezoneDate from '../../components/ClientTimezoneDate';
 import { getServerSession } from 'next-auth';
 import authOptions from '../../auth/authOptions';
 import LikeCount from '../../components/LikeCount';
-import DeletePostBtn from '../DeletePostBtn';
+import PostDropDownBtn from '../PostDropDownBtn';
 import LikePostBtn from '../../components/LikePostBtn';
 
 interface Props {
@@ -61,7 +61,7 @@ const page = async ({ params }: Props) => {
                 </Flex>
               </Flex>
               {session && session.user?.id == post.authorId && (
-                <DeletePostBtn postId={post.id} />
+                <PostDropDownBtn postId={post.id} />
               )}
             </Flex>
             <Flex direction='column' gap='1'>
