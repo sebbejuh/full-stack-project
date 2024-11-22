@@ -6,7 +6,7 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useSession } from 'next-auth/react';
 
-const DeletePostBtn = ({ postId }: { postId: string }) => {
+const PostDropDownBtn = ({ postId }: { postId: string }) => {
   const router = useRouter();
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -90,4 +90,4 @@ const DeletePostBtn = ({ postId }: { postId: string }) => {
   )
 }
 
-export default DeletePostBtn
+export default PostDropDownBtn
