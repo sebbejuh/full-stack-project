@@ -39,6 +39,9 @@ const page = async ({ params }: Props) => {
           author: {
             select: { name: true, image: true }
           }
+        },
+        orderBy: {
+          createdAt: 'desc'
         }
       }
     },
