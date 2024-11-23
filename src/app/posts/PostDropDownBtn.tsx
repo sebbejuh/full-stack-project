@@ -18,6 +18,7 @@ const PostDropDownBtn = ({ postId }: { postId: string }) => {
       await axios.delete("/api/posts/" + postId, {
       });
       toast.success('Post Deleted!')
+      router.push('/posts')
       router.refresh();
       setLoading(false);
     } catch (error) {
