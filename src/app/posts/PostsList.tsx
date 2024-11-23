@@ -15,9 +15,13 @@ type LikeWithUser = Like & {
     name: string | null;
   };
 };
+type Count = {
+  comments: number;
+}
 type PostWithAuthorAndLikes = PrismaPost & {
   author: Author | null;
   likes: LikeWithUser[];
+  _count: Count;
 };
 interface PostListProps {
   posts: PostWithAuthorAndLikes[];

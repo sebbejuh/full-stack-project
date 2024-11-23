@@ -17,9 +17,13 @@ type LikeWithUser = Like & {
     name: string | null;
   };
 };
+type Count = {
+  comments: number;
+}
 type PostWithAuthorAndLikes = PrismaPost & {
   author: Author | null;
   likes: LikeWithUser[];
+  _count: Count;
 };
 interface SearchParams {
   sortPosts: string;
@@ -53,6 +57,9 @@ const Posts = async ({ searchParams }: { searchParams: SearchParams }) => {
             select: { name: true }
           }
         }
+      },
+      _count: {
+        select: { comments: true }
       }
     },
     orderBy,
