@@ -41,6 +41,7 @@ export async function DELETE(req: NextRequest) {
         sessions: true,
         posts: true,
         likes: true, //should cascade and be deleted with posts but might as well add them
+        comments: true, //should cascade and be deleted with posts but might as well add them
       },
     });
 
