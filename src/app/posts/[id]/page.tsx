@@ -10,6 +10,7 @@ import PostDropDownBtn from '../PostDropDownBtn';
 import LikePostBtn from '../LikePostBtn';
 import CommentCard from './CommentCard';
 import CommentForm from './CommentForm';
+import { recentDate } from '@/app/components/snippets';
 
 export const dynamic = 'force-dynamic';
 
@@ -47,10 +48,8 @@ const page = async ({ params }: Props) => {
     },
   })
   if (!post) notFound();
-  const isSameDate = new Date(post.createdAt).getTime() === new Date(post.updatedAt).getTime();
-  const mostRecentDate = isSameDate ? post.createdAt : (new Date(post.updatedAt).getTime() > new Date(post.createdAt).getTime() ? post.updatedAt : post.createdAt);
-  const isUpdated = !isSameDate && new Date(post.updatedAt).getTime() > new Date(post.createdAt).getTime();
 
+  const dateObject = recentDate(post.createdAt, post.updatedAt)
   const comments = post.comments
   return (
     <Flex direction='column' align='center' gap='4'>
@@ -69,7 +68,7 @@ const page = async ({ params }: Props) => {
                   <Flex direction='column' gap='1'>
                     <Text size='2' weight='bold'>{post.author?.name}</Text>
                     <Flex gap='2' align='center'>
-                      <Badge variant='surface' className='text-slate-300'>{isUpdated && 'Updated at'}<ClientTimezoneDate date={mostRecentDate} /></Badge>
+                      <Badge variant='surface' className='text-slate-300'>{dateObject.isUpdated && 'Updated: '}<ClientTimezoneDate date={dateObject.date} /></Badge>
                       {post.likes.length > 0 && (
                         <LikeCount likes={post.likes} />
                       )}

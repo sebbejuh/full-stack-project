@@ -2,6 +2,8 @@ import { Comment as PrismaComment } from '@prisma/client';
 import { Flex, Text, Card, Avatar, Badge, Box } from '@radix-ui/themes';
 import { PersonIcon } from "@radix-ui/react-icons";
 import ClientTimezoneDate from '../../components/ClientTimezoneDate';
+import { recentDate } from '@/app/components/snippets';
+
 type Author = {
   name: string | null;
   image: string | null;
@@ -14,9 +16,7 @@ interface CommentCardProps {
 }
 
 const CommentCard = ({ comment }: CommentCardProps) => {
-  const isSameDate = new Date(comment.createdAt).getTime() === new Date(comment.updatedAt).getTime();
-  const mostRecentDate = isSameDate ? comment.createdAt : (new Date(comment.updatedAt).getTime() > new Date(comment.createdAt).getTime() ? comment.updatedAt : comment.createdAt);
-  const isUpdated = !isSameDate && new Date(comment.updatedAt).getTime() > new Date(comment.createdAt).getTime();
+  const dateObject = recentDate(comment.createdAt, comment.updatedAt)
   return (
     <Card className='pb-0 px-0 w-full'>
       <Flex direction='column' gap='2' className='px-3 pb-3'>
@@ -30,7 +30,7 @@ const CommentCard = ({ comment }: CommentCardProps) => {
             />
             <Flex direction='row' gap='3' justify='center' align='center'>
               <Text size='1' weight='bold'>{comment.author?.name}</Text>
-              <Badge size='1' variant='surface' className='text-slate-300'>{isUpdated && 'Updated at'}<ClientTimezoneDate date={mostRecentDate} /></Badge>
+              <Badge size='1' variant='surface' className='text-slate-300'>{dateObject.isUpdated && 'Updated: '}<ClientTimezoneDate date={dateObject.date} /></Badge>
             </Flex>
           </Flex>
           {/* {session && session.user?.id == post.authorId && (

@@ -8,6 +8,7 @@ import { useSession } from 'next-auth/react';
 import LikePostBtn from './LikePostBtn';
 import LikeCount from './LikeCount';
 import Link from 'next/link'
+import { recentDate } from '../components/snippets';
 
 type Author = {
   name: string | null;
@@ -33,9 +34,7 @@ interface PostCardProps {
 const PostCard: React.FC<PostCardProps> = ({ post }) => {
   const { id, title, content, createdAt, updatedAt, author, authorId, likes, _count } = post;
   const { status, data: session } = useSession();
-  const isSameDate = new Date(createdAt).getTime() === new Date(updatedAt).getTime();
-  const mostRecentDate = isSameDate ? createdAt : (new Date(updatedAt).getTime() > new Date(createdAt).getTime() ? updatedAt : createdAt);
-  const isUpdated = !isSameDate && new Date(updatedAt).getTime() > new Date(createdAt).getTime();
+  const dateObject = recentDate(createdAt, updatedAt)
 
   return (
     <Skeleton loading={status === 'loading'}>
@@ -53,7 +52,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
                 <Flex direction='column' gap='1'>
                   <Text size='2' weight='bold'>{author?.name}</Text>
                   <Flex gap='2' align='center'>
-                    <Badge variant='surface' className='text-slate-300'>{isUpdated && 'Updated at'}<ClientTimezoneDate date={mostRecentDate} /></Badge>
+                    <Badge variant='surface' className='text-slate-300'>{dateObject.isUpdated && 'Updated: '}<ClientTimezoneDate date={dateObject.date} /></Badge>
                     {likes.length > 0 && (
                       <LikeCount likes={likes} />
                     )}
