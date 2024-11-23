@@ -18,16 +18,20 @@ type LikeWithUser = Like & {
     name: string | null;
   };
 };
+type Count = {
+  comments: number;
+}
 type PostWithAuthorAndLikes = PrismaPost & {
   author: Author | null;
   likes: LikeWithUser[]
+  _count: Count;
 };
 interface PostCardProps {
   post: PostWithAuthorAndLikes;
 }
 
 const PostCard: React.FC<PostCardProps> = ({ post }) => {
-  const { id, title, content, createdAt, updatedAt, author, authorId, likes } = post;
+  const { id, title, content, createdAt, updatedAt, author, authorId, likes, _count } = post;
   const { status, data: session } = useSession();
   const isSameDate = new Date(createdAt).getTime() === new Date(updatedAt).getTime();
   const mostRecentDate = isSameDate ? createdAt : (new Date(updatedAt).getTime() > new Date(createdAt).getTime() ? updatedAt : createdAt);
@@ -76,7 +80,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             <Flex>
               <Link href={'/posts/' + id.toString()}>
                 <Button variant='outline' className='cursor-pointer'>
-                  Comments
+                  Comments ({_count.comments})
                 </Button>
               </Link>
             </Flex>
