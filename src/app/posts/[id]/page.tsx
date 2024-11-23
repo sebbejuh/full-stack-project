@@ -9,6 +9,7 @@ import LikeCount from '../LikeCount';
 import PostDropDownBtn from '../PostDropDownBtn';
 import LikePostBtn from '../LikePostBtn';
 import CommentCard from './CommentCard';
+import CommentForm from './CommentForm';
 
 export const dynamic = 'force-dynamic';
 
@@ -52,7 +53,7 @@ const page = async ({ params }: Props) => {
     <Flex direction='column' align='center' gap='4'>
       <Box width='100%' maxWidth='600px'>
         <Flex direction='column' align='center' gap='4'>
-          <Card className='pb-0 px-0'>
+          <Card className='pb-0 px-0 w-full'>
             <Flex direction='column' gap='2' className='px-3 pb-3'>
               <Flex justify='between'>
                 <Flex gap='3' align='center'>
@@ -94,6 +95,7 @@ const page = async ({ params }: Props) => {
               </Flex>
             </Flex >
           </Card>
+          <CommentForm postId={post.id} />
           <Text>Comments</Text>
           <Flex direction='column' align='center' gap='2' width='100%'>
             {comments.map((comment) => (
