@@ -3,6 +3,9 @@ import { Flex, Text, Card, Avatar, Badge, Box } from '@radix-ui/themes';
 import { PersonIcon } from "@radix-ui/react-icons";
 import ClientTimezoneDate from '../../components/ClientTimezoneDate';
 import { recentDate } from '@/app/components/snippets';
+import CommentDropDownBtn from './CommentDropDownBtn'
+import { getServerSession } from 'next-auth';
+import authOptions from '../../auth/authOptions';
 
 type Author = {
   name: string | null;
@@ -15,7 +18,8 @@ interface CommentCardProps {
   comment: CommentWithAuthor;
 }
 
-const CommentCard = ({ comment }: CommentCardProps) => {
+const CommentCard = async ({ comment }: CommentCardProps) => {
+  const session = await getServerSession(authOptions)
   const dateObject = recentDate(comment.createdAt, comment.updatedAt)
   return (
     <Card className='pb-0 px-0 w-full'>
@@ -33,9 +37,9 @@ const CommentCard = ({ comment }: CommentCardProps) => {
               <Badge size='1' variant='surface' className='text-slate-300'>{dateObject.isUpdated && 'Updated: '}<ClientTimezoneDate date={dateObject.date} /></Badge>
             </Flex>
           </Flex>
-          {/* {session && session.user?.id == post.authorId && (
-                <PostDropDownBtn postId={post.id} />
-              )} */}
+          {session && session.user?.id == comment.authorId && (
+            <CommentDropDownBtn commentId={comment.id} />
+          )}
         </Flex>
         <Flex direction='column' gap='1'>
           <Box>
