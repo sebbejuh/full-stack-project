@@ -25,17 +25,15 @@ const CommentCard = async ({ comment }: CommentCardProps) => {
     <Card className='pb-0 px-0 w-full'>
       <Flex direction='column' gap='2' className='px-3 pb-3'>
         <Flex justify='between'>
-          <Flex gap='3' align='center'>
+          <Flex gap='3' align='center' wrap='wrap'>
             <Avatar
               size='1'
               src={comment.author?.image ?? undefined}
               radius='full'
               fallback={<PersonIcon width="32" height="32" />}
             />
-            <Flex direction='row' gap='3' justify='center' align='center'>
-              <Text size='1' weight='bold'>{comment.author?.name}</Text>
-              <Badge size='1' variant='surface' className='text-slate-300'>{dateObject.isUpdated && 'Updated: '}<ClientTimezoneDate date={dateObject.date} /></Badge>
-            </Flex>
+            <Text size='1' weight='bold'>{comment.author?.name}</Text>
+            <Badge size='1' variant='surface' className='text-slate-300'>{dateObject.isUpdated && 'Edited: '}<ClientTimezoneDate date={dateObject.date} /></Badge>
           </Flex>
           {session && session.user?.id == comment.authorId && (
             <CommentDropDownBtn commentId={comment.id} />
