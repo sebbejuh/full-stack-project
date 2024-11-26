@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useSession } from 'next-auth/react';
+import StartEditPostBtn from '../components/StartEditPostBtn';
 
 const PostDropDownBtn = ({ postId }: { postId: string }) => {
   const router = useRouter();
@@ -47,6 +48,9 @@ const PostDropDownBtn = ({ postId }: { postId: string }) => {
               <AlertDialog.Trigger>
                 <Text className='cursor-pointer'>Delete</Text>
               </AlertDialog.Trigger>
+            </DropdownMenu.Item>
+            <DropdownMenu.Item color="red">
+              <StartEditPostBtn postId={postId} />
             </DropdownMenu.Item>
           </DropdownMenu.Content>
         </DropdownMenu.Root>
