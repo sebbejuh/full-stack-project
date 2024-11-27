@@ -11,14 +11,20 @@ import LikePostBtn from '../LikePostBtn';
 import CommentCard from './CommentCard';
 import CommentForm from './CommentForm';
 import { recentDate } from '@/app/components/snippets';
+import EditPostForm from './EditPostForm';
 
 export const dynamic = 'force-dynamic';
 
-interface Props {
-  params: { id: string };
+interface searchParams {
+  editPost: string;
 }
 
-const page = async ({ params }: Props) => {
+interface Props {
+  params: { id: string };
+  searchParams: searchParams;
+}
+
+const page = async ({ params, searchParams }: Props) => {
   const postId = params.id.toString()
   const session = await getServerSession(authOptions)
 
@@ -79,14 +85,20 @@ const page = async ({ params }: Props) => {
                   <PostDropDownBtn postId={post.id} />
                 )}
               </Flex>
-              <Flex direction='column' gap='1'>
-                <Flex align='center'>
-                  <Text size='3' weight='medium'>{post.title}</Text>
+              {searchParams.editPost ? (
+                <EditPostForm post={post} />
+              ) : (
+                <Flex direction='column' gap='1'>
+                  <Flex align='center'>
+                    <Text size='3' weight='medium'>{post.title}</Text>
+                  </Flex>
+                  <Box>
+                    <Text size='2'> {post.content}</Text>
+                  </Box>
                 </Flex>
-                <Box>
-                  <Text size='2'> {post.content}</Text>
-                </Box>
-              </Flex>
+              )}
+
+
             </Flex>
             <Flex justify='between' style={{ backgroundColor: "#d8f4f609" }} className='px-3 py-2'>
               <Flex>
