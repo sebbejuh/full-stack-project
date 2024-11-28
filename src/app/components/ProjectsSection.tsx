@@ -55,10 +55,11 @@ const ProjectsSection = () => {
                   <Text size='3' className='font-light'>Delete own posts & comments.</Text>
                   <Text size='3' className='font-light'>Like posts & Unlike posts.</Text>
                   <Text size='3' className='font-light'>Sort posts several ways.</Text>
+                  <Text size='3' className='font-light'>Edit own posts.</Text>
                 </Flex>
-                <Text size='2' className='font-light'>
+                {/* <Text size='2' className='font-light'>
                   Coming: Functionality to edit posts.
-                </Text>
+                </Text> */}
               </Card>
               <Flex wrap='wrap' justify='center' gap='2' className='w-full'>
                 <Badge size='3' variant="surface">TypeScript</Badge>
