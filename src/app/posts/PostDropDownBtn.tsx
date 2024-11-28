@@ -49,7 +49,7 @@ const PostDropDownBtn = ({ postId }: { postId: string }) => {
                 <Text className='cursor-pointer'>Delete</Text>
               </AlertDialog.Trigger>
             </DropdownMenu.Item>
-            <DropdownMenu.Item color="red">
+            <DropdownMenu.Item>
               <StartEditPostBtn postId={postId} />
             </DropdownMenu.Item>
           </DropdownMenu.Content>
