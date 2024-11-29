@@ -51,7 +51,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
                 />
                 <Flex direction='column' gap='1'>
                   <Text size='2' weight='bold'>{author?.name}</Text>
-                  <Flex gap='2' align='center'>
+                  <Flex gap='2' align='center' wrap='wrap'>
                     <Badge variant='surface' className='text-slate-300'>{dateObject.isUpdated && 'Updated: '}<ClientTimezoneDate date={dateObject.date} /></Badge>
                     {likes.length > 0 && (
                       <LikeCount likes={likes} />
