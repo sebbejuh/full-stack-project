@@ -4,6 +4,7 @@ import { Theme } from '@radix-ui/themes';
 import NavBar from './NavBar';
 import AuthProvider from './auth/Provider';
 import { Toaster } from 'react-hot-toast';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
 
 const geistSans = localFont({
@@ -44,6 +45,7 @@ export default function RootLayout({
             />
           </Theme>
         </AuthProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
