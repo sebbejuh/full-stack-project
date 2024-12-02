@@ -20,7 +20,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: 'Locksenius Portfolio',
-  description: 'Portfolio under contruction',
+  description: 'A fullstack portfolio created by Sebastian Locksenius',
 };
 
 export default function RootLayout({
