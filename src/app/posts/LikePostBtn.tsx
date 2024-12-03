@@ -57,6 +57,9 @@ const LikePostBtn = ({ likes, postId }: LikeBtnProps) => {
         setTimeout(() => {
           setIsSubmitting(false);
         }, 2000);
+      } finally {
+        setIsSubmitting(false);
+        return;
       }
     }
 
@@ -79,6 +82,8 @@ const LikePostBtn = ({ likes, postId }: LikeBtnProps) => {
       setTimeout(() => {
         setIsSubmitting(false);
       }, 2000);
+    } finally {
+      setIsSubmitting(false);
     }
   }
 
