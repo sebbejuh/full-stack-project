@@ -57,11 +57,6 @@ const LikePostBtn = ({ likes, postId }: LikeBtnProps) => {
         setTimeout(() => {
           setIsSubmitting(false);
         }, 2000);
-      } finally {
-        setTimeout(() => {
-          setIsSubmitting(false);
-        }, 2000);
-        return;
       }
     }
 
@@ -81,10 +76,6 @@ const LikePostBtn = ({ likes, postId }: LikeBtnProps) => {
       const errorMessage = axiosError.response?.data?.error || 'An unknown error occurred';
       const errorDetails = axiosError.response?.data?.details?.join(', ') || '';
       toast.error(`Error: ${errorMessage}${errorDetails ? ` - ${errorDetails}` : ''}`);
-      setTimeout(() => {
-        setIsSubmitting(false);
-      }, 2000);
-    } finally {
       setTimeout(() => {
         setIsSubmitting(false);
       }, 2000);
