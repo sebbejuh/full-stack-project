@@ -15,14 +15,14 @@ const ProjectsSection = () => {
         transition={{ duration: 0.75 }}>
         <h2 className='text-4xl lg:text-6xl pb-6 lg:pb-12 lg:pt-6 font-thin tracking-tight'>Deployed Projects</h2>
       </MotionDiv>
-      <Flex justify='center' wrap='wrap' className='gap-y-8 gap-x-52 flex-col lg:flex-row items-center lg:items-start overflow-hidden lg:pt-5'>
+      <div className='grid grid-cols-1 lg:grid-cols-2 gap-y-8 gap-x-40 items-stretch overflow-hidden lg:pt-5 max-w-[1300px]'>
 
         <MotionDiv
           whileInView={{ opacity: 1, x: 0 }}
           initial={{ opacity: 0, x: -100 }}
           transition={{ duration: 0.75 }}
-          className='flex shrink-0 grow-0 sm:w-4/5 md:w-3/5 lg:w-1/3 h-full lg:min-h-[822px] max-w-full'>
-          <Card className='flex items-center lg:items-start justify-center lg:justify-start flex-wrap flex-auto gap-3 flex-col overflow-hidden'>
+          className='flex justify-center w-full'>
+          <Card className='flex items-center lg:items-start justify-center lg:justify-start flex-wrap flex-auto gap-3 flex-col overflow-hidden w-full'>
             <Inset side="top" pb="current">
               <Flex>
                 <Link href='/posts'>
@@ -51,11 +51,9 @@ const ProjectsSection = () => {
                 <Flex direction='column' align='center' justify='center' wrap='wrap'>
                   <Text size='3' className='font-light'>Login and register using google account.</Text>
                   <Text size='3' className='font-light'>Delete user account together with all saved data.</Text>
-                  <Text size='3' className='font-light'>Create posts & comments on posts.</Text>
-                  <Text size='3' className='font-light'>Delete own posts & comments.</Text>
-                  <Text size='3' className='font-light'>Like posts & Unlike posts.</Text>
+                  <Text size='3' className='font-light'>Create & delete own posts & comments on posts.</Text>
+                  <Text size='3' className='font-light'>Like posts, Unlike posts and Edit own posts.</Text>
                   <Text size='3' className='font-light'>Sort posts several ways.</Text>
-                  <Text size='3' className='font-light'>Edit own posts.</Text>
                 </Flex>
                 {/* <Text size='2' className='font-light'>
                   Coming: Functionality to edit posts.
@@ -73,13 +71,13 @@ const ProjectsSection = () => {
             </Flex>
           </Card>
         </MotionDiv>
-
+        {/* lg:min-h-[825px] */}
         <MotionDiv
           whileInView={{ opacity: 1, x: 0 }}
           initial={{ opacity: 0, x: 100 }}
           transition={{ duration: 0.75 }}
-          className='flex shrink-0 grow-0 sm:w-4/5 md:w-3/5 lg:w-1/3 h-full lg:min-h-[825px] max-w-full'>
-          <Card className='flex items-center lg:items-start justify-center lg:justify-start flex-wrap flex-auto gap-3 flex-col overflow-hidden'>
+          className='flex justify-center w-full'>
+          <Card className='flex items-center lg:items-start justify-center lg:justify-start flex-wrap flex-auto gap-3 flex-col overflow-hidden w-full'>
             <Inset side="top" pb="current" >
               <Flex>
                 <Link href='https://sebbejuh.github.io/webshop-ts/' passHref legacyBehavior>
@@ -126,7 +124,7 @@ const ProjectsSection = () => {
           </Card>
         </MotionDiv>
 
-      </Flex>
+      </div>
     </Flex>
   )
 }
