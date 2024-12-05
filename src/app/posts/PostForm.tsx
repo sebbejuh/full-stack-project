@@ -93,7 +93,7 @@ const PostForm = () => {
             </div>
             <Form.Control asChild>
               <input
-                className='box-border inline-flex h-[35px] w-full appearance-none items-center justify-center rounded bg-blackA2 px-2.5 text-[12px] leading-none shadow-[0_0_0_1px] shadow-gray-700 outline-none selection:bg-gray-400 selection:text-black hover:shadow-[0_0_0_1px_gray] focus:shadow-[0_0_0_1px_gray]'
+                className='box-border inline-flex h-[35px] w-full appearance-none items-center justify-center rounded bg-blackA2 px-2.5 text-sm leading-none shadow-[0_0_0_1px] shadow-gray-700 outline-none selection:bg-gray-400 selection:text-black hover:shadow-[0_0_0_1px_gray] focus:shadow-[0_0_0_1px_gray]'
                 type='text'
                 required
                 value={title}
@@ -118,7 +118,7 @@ const PostForm = () => {
             </div>
             <Form.Control asChild>
               <textarea
-                className='box-border inline-flex w-full h-[175px] md:h-[95px] leading-snug resize-none appearance-none items-center justify-center rounded bg-blackA2 p-2.5 text-[13px] leading-none shadow-[0_0_0_1px] shadow-gray-700 outline-none selection:bg-gray-400 selection:text-black hover:shadow-[0_0_0_1px_gray] focus:shadow-[0_0_0_1px_gray]'
+                className='box-border inline-flex w-full h-[155px] sm:h-[100px] leading-snug resize-none appearance-none items-center justify-center rounded bg-blackA2 p-2.5 text-sm leading-none shadow-[0_0_0_1px] shadow-gray-700 outline-none selection:bg-gray-400 selection:text-black hover:shadow-[0_0_0_1px_gray] focus:shadow-[0_0_0_1px_gray]'
                 required
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
