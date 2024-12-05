@@ -1,5 +1,5 @@
 import prisma from '../../../../prisma/prisma';
-import { Flex, Text, Card, Box, Avatar, Badge } from '@radix-ui/themes';
+import { Flex, Text, Card, Box, Avatar, Badge, Heading } from '@radix-ui/themes';
 import { PersonIcon } from "@radix-ui/react-icons";
 import { notFound } from "next/navigation";
 import ClientTimezoneDate from '../../components/ClientTimezoneDate';
@@ -110,11 +110,15 @@ const page = async ({ params, searchParams }: Props) => {
             </Flex >
           </Card>
           <CommentForm postId={post.id} />
-          <Text>Comments</Text>
+          <Heading as='h4' size='4'>Comments</Heading>
           <Flex direction='column' align='center' gap='2' width='100%'>
-            {comments.map((comment) => (
-              <CommentCard key={comment.id} comment={comment} />
-            ))}
+            {comments.length <= 0 ? (
+              <Text size='2'>No comments yet..</Text>
+            ) : (
+              comments.map((comment) => (
+                <CommentCard key={comment.id} comment={comment} />
+              ))
+            )}
           </Flex>
         </Flex>
       </Box >
