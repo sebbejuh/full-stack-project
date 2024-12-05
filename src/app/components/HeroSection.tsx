@@ -28,7 +28,7 @@ const HeroSection = () => {
                 <a target='_blank'>
                   <div className="p-3 bg-radix-indigo-10 transition ease-in-out delay-25 hover:scale-110 hover:bg-radix-indigo-10 duration-300">
                     <Flex align="center" justify="center">
-                      <Text>Resume</Text>
+                      <Text as='label'>Resume</Text>
                     </Flex>
                   </div>
                 </a>
@@ -88,7 +88,7 @@ const HeroSection = () => {
                     <Card size="2" className="transition ease-in-out delay-25 hover:-translate-y-1 hover:scale-110 duration-300">
                       <Flex gap="1" align="center" justify="center">
                         {item.icon}
-                        <Text>{item.text}</Text>
+                        <Text as='label'>{item.text}</Text>
                       </Flex>
                     </Card>
                   </div>

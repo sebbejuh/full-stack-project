@@ -45,17 +45,17 @@ const ProjectsSection = () => {
                   <Button color='purple' className='cursor-pointer'><FaGithub size='1.35rem' />Github</Button>
                 </a>
               </Link>
-              <Text size='3' className='max-w-xl font-light'>Deployed on this very website using Vercel!</Text>
+              <Text as='p' size='3' className='max-w-xl font-light'>Deployed on this very website using Vercel!</Text>
               <Card className='flex flex-col justify-center text-center gap-2 w-full'>
                 <Heading size='5' as='h5' className='font-thin underline'>Features</Heading>
                 <Flex direction='column' align='center' justify='center' wrap='wrap'>
-                  <Text size='3' className='font-light'>Login and register using google account.</Text>
-                  <Text size='3' className='font-light'>Delete user account together with all saved data.</Text>
-                  <Text size='3' className='font-light'>Create & delete own posts & comments on posts.</Text>
-                  <Text size='3' className='font-light'>Like posts, Unlike posts and Edit own posts.</Text>
-                  <Text size='3' className='font-light'>Sort posts several ways.</Text>
+                  <Text as='p' size='3' className='font-light'>Login and register using google account.</Text>
+                  <Text as='p' size='3' className='font-light'>Delete user account together with all saved data.</Text>
+                  <Text as='p' size='3' className='font-light'>Create & delete own posts & comments on posts.</Text>
+                  <Text as='p' size='3' className='font-light'>Like posts, Unlike posts and Edit own posts.</Text>
+                  <Text as='p' size='3' className='font-light'>Sort posts several ways.</Text>
                 </Flex>
-                {/* <Text size='2' className='font-light'>
+                {/* <Text as='p' size='2' className='font-light'>
                   Coming: Functionality to edit posts.
                 </Text> */}
               </Card>
@@ -102,15 +102,15 @@ const ProjectsSection = () => {
                   <Button color='purple' className='cursor-pointer'><FaGithub size='1.35rem' />Github</Button>
                 </a>
               </Link>
-              <Text size='3' className='max-w-xl font-light'>Deployed using GitHub Pages!</Text>
+              <Text as='p' size='3' className='max-w-xl font-light'>Deployed using GitHub Pages!</Text>
               <Card className='flex flex-col justify-center text-center gap-2 w-full'>
                 <Heading size='5' as='h5' className='font-thin underline'>Features</Heading>
                 <Flex direction='column' align='center' justify='center' wrap='wrap'>
-                  <Text size='3' className='font-light'>Add items to cart, Remove items from cart.</Text>
-                  <Text size='3' className='font-light'>Change amount of items in cart which updates price.</Text>
-                  <Text size='3' className='font-light'>Create orders from cart, Delete orders from user.</Text>
+                  <Text as='p' size='3' className='font-light'>Add items to cart, Remove items from cart.</Text>
+                  <Text as='p' size='3' className='font-light'>Change amount of items in cart which updates price.</Text>
+                  <Text as='p' size='3' className='font-light'>Create orders from cart, Delete orders from user.</Text>
                 </Flex>
-                <Text size='2' className='font-light'>
+                <Text as='p' size='2' className='font-light'>
                   Stores user actions in local storage & accesses products from JSON document.
                 </Text>
               </Card>
