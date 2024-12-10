@@ -77,7 +77,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
               <LikePostBtn likes={likes} postId={id} />
             </Flex>
             <Flex>
-              <Link href={'/posts/' + id.toString()} scroll={false}>
+              <Link href={'/posts/' + id.toString()}>
                 <Button variant='outline' className='cursor-pointer'>
                   Comments ({_count.comments})
                 </Button>
