@@ -29,7 +29,7 @@ const ClientTimezoneDate: React.FC<ClientTimezoneProps> = ({ date }) => {
       return `${monthNames[date.getMonth()]} ${day} ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}`;
     }
 
-    return `${day} ${date.getFullYear()} ${monthNames[date.getMonth()]} ${day} ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}`;
+    return `${date.getFullYear()} ${monthNames[date.getMonth()]} ${day} ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}`;
   };
 
   return <>{formatDateAtUserTimezone(date)}</>;
