@@ -1,5 +1,5 @@
 import { Flex, Text, Card, } from '@radix-ui/themes';
-import { SiTypescript, SiCss3, SiPrisma, SiMongodb, SiPostgresql, SiExpress } from 'react-icons/si';
+import { SiTypescript, SiJavascript, SiCss3, SiPrisma, SiMongodb, SiPostgresql, SiExpress, SiPython, SiDjango } from 'react-icons/si';
 import { FaHtml5, FaReact, FaNodeJs, FaWordpressSimple, FaGitAlt, FaSass } from 'react-icons/fa';
 import { RiNextjsFill, RiTailwindCssFill } from 'react-icons/ri';
 import { GrMysql } from 'react-icons/gr';
@@ -23,8 +23,8 @@ const HeroSection = () => {
               initial={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.75, delay: 0.1 }}
               className='flex gap-5 items-center'>
-              <span className='bg-gradient-to-r from-radix-indigo-3 via-radix-indigo-7 to-radix-indigo-9 bg-clip-text text-4xl tracking-tight text-transparent pb-1'>Frontend Developer</span>
-              <Link href='https://locksenius.my.canva.site/front-end-cv-sebastian-locksenius' passHref legacyBehavior>
+              <span className='bg-gradient-to-r from-radix-indigo-3 via-radix-indigo-7 to-radix-indigo-9 bg-clip-text text-4xl tracking-tight text-transparent pb-1'>Fullstack Developer</span>
+              <Link href='https://locksenius.my.canva.site/cv-sebastian-locksenius' passHref legacyBehavior>
                 <a target='_blank'>
                   <div className="p-3 bg-radix-indigo-10 transition ease-in-out delay-25 hover:scale-110 hover:bg-radix-indigo-10 duration-300">
                     <Flex align="center" justify="center">
@@ -46,9 +46,10 @@ const HeroSection = () => {
                 My experience includes
                 working collaboratively in teams, often
                 using agile project management
-                methods. <br />
+                methods.
                 I am passionate about problemsolving and keeping up to date with new
-                technologies and concepts
+                technologies and concepts.<br />
+                Currenly studying system development with a focus on AI & machine learning using Python.
               </p>
             </MotionDiv>
           </div>
@@ -69,10 +70,13 @@ const HeroSection = () => {
               <div className="grid grid-cols-2 grid-rows-7 md:grid-cols-3 md:grid-rows-6 lg:grid-cols-3 lg:grid-rows-5 gap-4">
                 {[
                   { icon: <SiTypescript size="1.35rem" />, text: 'TypeScript' },
+                  { icon: <SiJavascript size="1.35rem" />, text: 'JavaScript' },
+                  { icon: <SiPython size="1.35rem" />, text: 'Python' },
                   { icon: <FaHtml5 size="1.35rem" />, text: 'HTML' },
                   { icon: <SiCss3 size="1.35rem" />, text: 'CSS' },
                   { icon: <FaReact size="1.35rem" />, text: 'React' },
                   { icon: <RiNextjsFill size="1.35rem" />, text: 'Next.js' },
+                  { icon: <SiDjango size="1.35rem" />, text: 'Django' },
                   { icon: <FaNodeJs size="1.35rem" />, text: 'Node.js' },
                   { icon: <SiPrisma size="1.35rem" />, text: 'Prisma' },
                   { icon: <RiTailwindCssFill size="1.35rem" />, text: 'Tailwind' },
