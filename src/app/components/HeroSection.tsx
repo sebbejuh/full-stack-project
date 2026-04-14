@@ -28,7 +28,7 @@ const HeroSection = () => {
                 <a target='_blank'>
                   <div className="p-3 bg-radix-indigo-10 transition ease-in-out delay-25 hover:scale-110 hover:bg-radix-indigo-10 duration-300">
                     <Flex align="center" justify="center">
-                      <Text as='label'>Resume</Text>
+                      <Text className='cursor-pointer' as='label'>Resume</Text>
                     </Flex>
                   </div>
                 </a>
