@@ -49,7 +49,7 @@ const HeroSection = () => {
                 methods.
                 I am passionate about problemsolving and keeping up to date with new
                 technologies and concepts.<br />
-                Currenly studying system development with a focus on AI & machine learning using Python.
+                Recently finished studying system development with a focus on AI & machine learning using Python.
               </p>
             </MotionDiv>
           </div>
