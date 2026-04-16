@@ -38,7 +38,7 @@ const ProjectsSection = () => {
               </Flex>
             </Inset>
             <Flex gap='3' direction='column' justify='center' className='items-center w-full'>
-              <Heading as='h3' className='text-1xl font-thin'>Posts App <span className='text-sm'>(in progress)</span></Heading>
+              <Heading as='h3' className='text-1xl font-thin'>Posts App</Heading>
               <Heading size='3' as='h4' className='font-thin'>Full-stack social media web app</Heading>
               <Link href='https://github.com/sebbejuh/full-stack-project' passHref legacyBehavior>
                 <a target='_blank'>
@@ -47,7 +47,7 @@ const ProjectsSection = () => {
               </Link>
               <Text as='p' size='3' className='max-w-xl font-light'>Deployed on this very website using Vercel!</Text>
               <Card className='flex flex-col justify-center text-center gap-2 w-full'>
-                <Heading size='5' as='h5' className='font-thin underline'>Features</Heading>
+                <Heading size='5' as='h5' className='font-thin'>Features</Heading>
                 <Flex direction='column' align='center' justify='center' wrap='wrap'>
                   <Text as='p' size='3' className='font-light'>Login and register using google account.</Text>
                   <Text as='p' size='3' className='font-light'>Delete user account together with all saved data.</Text>
@@ -104,7 +104,7 @@ const ProjectsSection = () => {
               </Link>
               <Text as='p' size='3' className='max-w-xl font-light'>Deployed using GitHub Pages!</Text>
               <Card className='flex flex-col justify-center text-center gap-2 w-full'>
-                <Heading size='5' as='h5' className='font-thin underline'>Features</Heading>
+                <Heading size='5' as='h5' className='font-thin'>Features</Heading>
                 <Flex direction='column' align='center' justify='center' wrap='wrap'>
                   <Text as='p' size='3' className='font-light'>Add items to cart, Remove items from cart.</Text>
                   <Text as='p' size='3' className='font-light'>Change amount of items in cart which updates price.</Text>
