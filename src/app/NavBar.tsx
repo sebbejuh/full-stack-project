@@ -1,24 +1,78 @@
 'use client'
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
-import { Avatar, Box, Container, DropdownMenu, Flex, Text, Button, Skeleton } from '@radix-ui/themes';
-import { HomeIcon } from '@radix-ui/react-icons'
+import { Avatar, Box, Container, Flex, Text, Button, Skeleton, DropdownMenu } from '@radix-ui/themes';
+import { HomeIcon, HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { usePathname, useRouter } from 'next/navigation';
 import classNames from 'classnames';
 import { BsGoogle } from 'react-icons/bs';
 import { useState } from 'react';
 
 const NavBar = () => {
+  const currentPath = usePathname();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const navLinks = [
+    { label: 'Home', href: '/', icon: <HomeIcon width='20' height='20' /> },
+    { label: 'Posts App', href: '/posts' },
+  ];
+
   return (
     <nav className='fixed top-0 z-10 border-b border-zinc-800 px-5 py-3 w-full' style={{ backgroundColor: '#1b1c1f' }}>
       <Container>
-        <Flex justify='between'>
-          <Flex align='center' gap='3'>
-            <Link href='/'>
-              <HomeIcon width='18' height='18' />
-            </Link>
-            <NavLinks />
+        <Flex justify='between' align='center' gap='3'>
+          {/* Desktop Links */}
+          <Flex align='center' gap='3' className='hidden md:flex'>
+            <ul className='flex space-x-6'>
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href}
+                    className={classNames({
+                      'nav-link': true,
+                      '!text-white underline underline-offset-4': link.href === currentPath,
+                    })}>
+                    <span className='flex items-center gap-2'>
+                      {link.icon}
+                      {link.label}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </Flex>
+
+          {/* Mobile Menu */}
+          <div className='flex md:hidden'>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className='p-2 text-zinc-200 hover:text-white'
+            >
+              <HamburgerMenuIcon width='24' height='24' />
+            </button>
+
+            {mobileMenuOpen && (
+              <div className='fixed top-16 left-0 right-0 w-full bg-zinc-900 border-t border-b border-zinc-700 shadow-lg py-4 z-20'>
+                <Container>
+                  <div className='flex flex-col gap-2 items-center'>
+                    {navLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className='block px-6 py-3 text-base hover:bg-zinc-800 transition-colors rounded'
+                      >
+                        <span className='flex items-center gap-2'>
+                          {link.label}
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                </Container>
+              </div>
+            )}
+          </div>
+
+          {/* AuthStatus - Always Visible */}
           <Flex>
             <AuthStatus />
           </Flex>
@@ -72,31 +126,6 @@ const AuthStatus = () => {
         </DropdownMenu.Content>
       </DropdownMenu.Root>
     </Box>
-  );
-};
-
-const NavLinks = () => {
-  const currentPath = usePathname();
-  const links = [
-    { label: 'Home', href: '/' },
-    { label: 'Posts App', href: '/posts' },
-  ];
-  return (
-    <ul className='flex space-x-6'>
-      {links.map((link) => (
-        <li key={link.href}>
-          <Link
-            className={classNames({
-              'nav-link': true,
-              '!text-white underline underline-offset-4': link.href === currentPath,
-            })}
-            href={link.href}
-          >
-            {link.label}
-          </Link>
-        </li>
-      ))}
-    </ul>
   );
 };
 
