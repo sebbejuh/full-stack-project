@@ -16,7 +16,7 @@ const HeroSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               initial={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.75, delay: 0 }}
-              className='flex gap-5 items-center flex-wrap justify-center pb-16 mt-10 lg:mt-16 lg:justify-start'>
+              className='flex gap-5 items-center flex-wrap justify-center pb-10 lg:mt-16 lg:justify-start'>
               <h1 className='text-5xl md:text-6xl font-thin tracking-tight lg:text-8xl'>Sebastian </h1>
               <h1 className='text-5xl md:text-6xl font-thin tracking-tight lg:text-8xl'> Locksenius</h1>
             </MotionDiv>
