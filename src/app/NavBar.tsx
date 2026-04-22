@@ -41,6 +41,11 @@ const NavBar = () => {
             </ul>
           </Flex>
 
+          {/* AuthStatus - Mobile - left side */}
+          <div className='flex md:hidden'>
+            <AuthStatus />
+          </div>
+
           {/* Mobile Menu */}
           <div className='flex md:hidden'>
             <button
@@ -51,17 +56,17 @@ const NavBar = () => {
             </button>
 
             {mobileMenuOpen && (
-              <div className='fixed top-16 left-0 right-0 w-full bg-zinc-900 border-t border-b border-zinc-700 shadow-lg py-4 z-20'>
+              <div className='fixed top-16 left-0 right-0 w-full bg-zinc-900 border-t border-zinc-700 shadow-lg py-0 z-20'>
                 <Container>
-                  <div className='flex flex-col gap-2 items-center'>
+                  <div className='flex flex-col items-center'>
                     {navLinks.map((link) => (
                       <Link
                         key={link.href}
                         href={link.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className='block px-6 py-3 text-base hover:bg-zinc-800 transition-colors rounded'
+                        className='flex justify-center w-full px-6 py-4 text-base hover:bg-zinc-800 transition-colors rounded border-b border-zinc-700'
                       >
-                        <span className='flex items-center gap-2'>
+                        <span className='flex items-center gap-2 text-lg'>
                           {link.label}
                         </span>
                       </Link>
@@ -72,10 +77,10 @@ const NavBar = () => {
             )}
           </div>
 
-          {/* AuthStatus - Always Visible */}
-          <Flex>
+          {/* AuthStatus - Desktop - right side */}
+          <div className='hidden md:flex'>
             <AuthStatus />
-          </Flex>
+          </div>
         </Flex>
       </Container>
     </nav>
